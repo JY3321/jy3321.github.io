@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Windows下如何查看某个端口被谁占用 | 骄阳焦洋 | 明明如月，何时可掇？忧从中来，不可断绝。</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Windows">
+    <meta name="description" content="我们以4000端口为例： 1.按下 Win+R 再输 入cmd 调出命令行窗口，输入 netstat -aon|findstr &amp;quot;4000&amp;quot; ，找到指定行最后一列的数字 （PID） ，我们这里是 8364 .2.输入 tasklist|findstr &amp;quot;8364&amp;quot; ，发现是 node.exe 占用了4000端口。3.再次输入 taskkill /f /t /">
+<meta name="keywords" content="Windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows下如何查看某个端口被谁占用">
+<meta property="og:url" content="https://jy3321.github.io/2019/08/12/PortOccupancy/index.html">
+<meta property="og:site_name" content="骄阳焦洋">
+<meta property="og:description" content="我们以4000端口为例： 1.按下 Win+R 再输 入cmd 调出命令行窗口，输入 netstat -aon|findstr &amp;quot;4000&amp;quot; ，找到指定行最后一列的数字 （PID） ，我们这里是 8364 .2.输入 tasklist|findstr &amp;quot;8364&amp;quot; ，发现是 node.exe 占用了4000端口。3.再次输入 taskkill /f /t /">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/12/PortOccupancy/QQ图片20190812141332.png">
+<meta property="og:updated_time" content="2019-08-12T07:16:29.347Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows下如何查看某个端口被谁占用">
+<meta name="twitter:description" content="我们以4000端口为例： 1.按下 Win+R 再输 入cmd 调出命令行窗口，输入 netstat -aon|findstr &amp;quot;4000&amp;quot; ，找到指定行最后一列的数字 （PID） ，我们这里是 8364 .2.输入 tasklist|findstr &amp;quot;8364&amp;quot; ，发现是 node.exe 占用了4000端口。3.再次输入 taskkill /f /t /">
+<meta name="twitter:image" content="https://jy3321.github.io/2019/08/12/PortOccupancy/QQ图片20190812141332.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="骄阳焦洋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/about" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">焦洋</h5>
+          <a href="mailto:821535576@qq.com" title="821535576@qq.com" class="mail">821535576@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JY3321" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Windows下如何查看某个端口被谁占用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Windows下如何查看某个端口被谁占用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-11T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-08-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Windows/">Windows</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-PortOccupancy"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Windows下如何查看某个端口被谁占用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-12 00:00:00" datetime="2019-08-11T16:00:00.000Z"  itemprop="datePublished">2019-08-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Windows/">Windows</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>我们以4000端口为例：</p>
+<p>1.按下 <code>Win+R</code> 再输 入<code>cmd</code> 调出命令行窗口，输入 <code>netstat -aon|findstr &quot;4000&quot;</code> ，找到指定行最后一列的数字 <code>（PID）</code> ，我们这里是 <code>8364</code> .<br>2.输入 <code>tasklist|findstr &quot;8364&quot;</code> ，发现是 <code>node.exe</code> 占用了4000端口。<br>3.再次输入 <code>taskkill /f /t /im node.exe</code> 结束该进程。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/12/PortOccupancy/QQ图片20190812141332.png" alt="QQ图片20190812141332" title>
+                </div>
+                <div class="image-caption">QQ图片20190812141332</div>
+            </figure>
+
+
+<p>当然第二第三步你也可以再任务管理中进行操作，只需要第一步 <code>netstat -aon|findstr &quot;4000&quot;</code> 找到PID，在任务管理器中PID一列找到对应的进程并把它结束就可以了。如果任务管理器中没有PID这一列，右键单击列头，勾选PID这一列就可以看到了。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-12T07:16:29.347Z" itemprop="dateUpdated">2019-08-12 15:16:29</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://jy3321.github.io">
+            <img src="/img/avatar.png" alt="焦洋">
+            焦洋
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jy3321.github.io/2019/08/12/PortOccupancy/&title=《Windows下如何查看某个端口被谁占用》 — 骄阳焦洋&pic=https://jy3321.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jy3321.github.io/2019/08/12/PortOccupancy/&title=《Windows下如何查看某个端口被谁占用》 — 骄阳焦洋&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jy3321.github.io/2019/08/12/PortOccupancy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Windows下如何查看某个端口被谁占用》 — 骄阳焦洋&url=https://jy3321.github.io/2019/08/12/PortOccupancy/&via=https://jy3321.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jy3321.github.io/2019/08/12/PortOccupancy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/08/12/HexoPictures/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Hexo博客插入图片的问题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/12/HexoComments/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hexo博客如何添加评论功能</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "oMYYpfWCE9CzzKCeKeTxMz6p-MdYXbMMI",
+            appKey: "LAMQb9PbvJ4qgACg5YMiLAdO",
+            avatar: "mm",
+            placeholder: "你瞅啥？",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃颗糖呗~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat_code.jpg" data-alipay="/img/alipay_code.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        
+    </div>
+    <div class="bottom">
+        <p><span>焦洋 &copy; 2019 - 2020</span>
+        </p>
+		<p><span>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+        </span></p>
+		<p><span>
+                <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备19013686号</a> 
+        </span></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jy3321.github.io/2019/08/12/PortOccupancy/&title=《Windows下如何查看某个端口被谁占用》 — 骄阳焦洋&pic=https://jy3321.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jy3321.github.io/2019/08/12/PortOccupancy/&title=《Windows下如何查看某个端口被谁占用》 — 骄阳焦洋&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jy3321.github.io/2019/08/12/PortOccupancy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Windows下如何查看某个端口被谁占用》 — 骄阳焦洋&url=https://jy3321.github.io/2019/08/12/PortOccupancy/&via=https://jy3321.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jy3321.github.io/2019/08/12/PortOccupancy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aMW7DMAwF0Nz/0u7aIqjzSUaDpaepCBzJLwNLiny94nW9rd+fJ0++P3N/1mvFwsDAeCzjul33z+QHJzu/75a8GwYGxjmM+8CXB8HkW0nIznfAwMDAmL9cEqaroRwDAwMjD4vVcJljMDAwMHpFbHJwUsQmpy+sxTEwMB7ImJSmq/9e0t/AwMB4FOMqrl6amAToa7AwMDD2ZqxuQM6jYiHRxMDAOJJRPSC56E8uzpJPoo0wMDC2YFQv6KvX+tVWQfXK70+Gi4GBcQwjD5pJOJ6kfc3/GBgYGFszqiMRkxK3+uRoWgQDA2MLxnzQoXdBVm05/HsKBgbGAYxJ4phctM1bmx/eEAMD40hGNWlLrtiSs5p3/hgYGMcw8lf5Vvo4H9oodB4wMDAezsgTu9Fh8TPlTzAwMLZmTMLfZDxiYbqJgYGxKWPSsOyFzur+owQRAwNjC0ZvnGL+6nl4LSAxMDA2ZVS3W0FKdv5QPGNgYBzDSIJdPlQxASTDYf92OTAwMDZl5JtWRyWSfealLwYGxgmM/OJsEnarrdAkJcXAwNibcRVXtXnZC9mFwjWvfTEwMB7LyFfvtfKfIA/ueZsTAwNjJ0bzIr54DXf/E1SDNQYGxpmMyfhFb8yil/ZFtTgGBsbxjF4xWc1P8wEODAwMjDx1y8vXankcJY4YGBgHML7VDOi1OavhFQMD4zTGZFRrckC1cJ3sgIGB8VjGD/+p0T+PIjPyAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去哪里了？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '你回来干嘛！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

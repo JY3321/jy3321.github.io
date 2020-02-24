@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Hexo博客如何添加评论功能 | 骄阳焦洋 | 明明如月，何时可掇？忧从中来，不可断绝。</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Hexo,Valine">
+    <meta name="description" content="写在前面想要让自己的博客能够进行互动，所以要添加评论功能。自己也是捣鼓了一会才终于实现。 评论系统的选择  多说：貌似已经关闭了 disqus：需要翻墙访问才行 友言:不支持https协议，而github使用的是https协议 网易云跟帖：需要域名 搜狐畅言：需要备案，不然只能使用15天 来比力：很多人都推荐使用这个，自己尝试了下确实可行。但是加载速度是真的是太慢了。。。  在GG了一堆评论系统后">
+<meta name="keywords" content="Hexo,Valine">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客如何添加评论功能">
+<meta property="og:url" content="https://jy3321.github.io/2019/08/12/HexoComments/index.html">
+<meta property="og:site_name" content="骄阳焦洋">
+<meta property="og:description" content="写在前面想要让自己的博客能够进行互动，所以要添加评论功能。自己也是捣鼓了一会才终于实现。 评论系统的选择  多说：貌似已经关闭了 disqus：需要翻墙访问才行 友言:不支持https协议，而github使用的是https协议 网易云跟帖：需要域名 搜狐畅言：需要备案，不然只能使用15天 来比力：很多人都推荐使用这个，自己尝试了下确实可行。但是加载速度是真的是太慢了。。。  在GG了一堆评论系统后">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/12/HexoComments/40K$@D1EWKG7%7D[WJW8$4_7T.png">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/12/HexoComments/G0_%602%0C3MTHM2VO%7DAYHW94.png">
+<meta property="og:updated_time" content="2019-08-14T05:18:59.701Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo博客如何添加评论功能">
+<meta name="twitter:description" content="写在前面想要让自己的博客能够进行互动，所以要添加评论功能。自己也是捣鼓了一会才终于实现。 评论系统的选择  多说：貌似已经关闭了 disqus：需要翻墙访问才行 友言:不支持https协议，而github使用的是https协议 网易云跟帖：需要域名 搜狐畅言：需要备案，不然只能使用15天 来比力：很多人都推荐使用这个，自己尝试了下确实可行。但是加载速度是真的是太慢了。。。  在GG了一堆评论系统后">
+<meta name="twitter:image" content="https://jy3321.github.io/2019/08/12/HexoComments/40K$@D1EWKG7%7D[WJW8$4_7T.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="骄阳焦洋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/about" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">焦洋</h5>
+          <a href="mailto:821535576@qq.com" title="821535576@qq.com" class="mail">821535576@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JY3321" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Hexo博客如何添加评论功能</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Hexo博客如何添加评论功能</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-11T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-08-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo/">Hexo</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写在前面"><span class="post-toc-number">1.</span> <span class="post-toc-text">写在前面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#评论系统的选择"><span class="post-toc-number">2.</span> <span class="post-toc-text">评论系统的选择</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Valine评论系统安装"><span class="post-toc-number">3.</span> <span class="post-toc-text">Valine评论系统安装</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-HexoComments"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Hexo博客如何添加评论功能</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-12 00:00:00" datetime="2019-08-11T16:00:00.000Z"  itemprop="datePublished">2019-08-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hexo/">Hexo</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>想要让自己的博客能够进行互动，所以要添加评论功能。自己也是捣鼓了一会才终于实现。</p>
+<h3 id="评论系统的选择"><a href="#评论系统的选择" class="headerlink" title="评论系统的选择"></a>评论系统的选择</h3><hr>
+<ul>
+<li>多说：貌似已经关闭了</li>
+<li>disqus：需要翻墙访问才行</li>
+<li>友言:不支持https协议，而github使用的是https协议</li>
+<li>网易云跟帖：需要域名</li>
+<li>搜狐畅言：需要备案，不然只能使用15天</li>
+<li>来比力：很多人都推荐使用这个，自己尝试了下确实可行。但是加载速度是真的是太慢了。。。</li>
+</ul>
+<p>在GG了一堆评论系统后，最后发现了一个叫 <code>valine</code> 的评论系统， <code>indigo</code>主题其实也配置了这个系统。</p>
+<hr>
+<h3 id="Valine评论系统安装"><a href="#Valine评论系统安装" class="headerlink" title="Valine评论系统安装"></a>Valine评论系统安装</h3><hr>
+<p>首先我们要去 <code>leancloud</code> 官网注册一个账号，由于国内版的最近好像也要GG，所以我们选择注册 <a href="https://us.leancloud.cn/login.html#/signin" target="_blank" rel="noopener">国际版Valine</a> ,注册成功之后创建一个应用，选择<code>开发版</code>即可，在<code>应用Key</code>中我们可以看到你的 <code>AppID</code> 和 <code>AppKey</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/12/HexoComments/40K$@D1EWKG7}[WJW8$4_7T.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>打开主题文件夹中的配置文件 <code>_config.yml</code> ，填写其中的<code>valine</code>，例如我的：</p>
+<p><img src="/2019/08/12/HexoComments/G0_%602%0C3MTHM2VO%7DAYHW94.png" alt></p>
+<p>最后，在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web 安全域名 把你的域名加进去。</p>
+<p>然后你的评论系统应该就可以用了。<br>以上是针对例如 <code>indigo</code> 等自带 <code>valine</code> 配置文件的博客主题的安装方法。如果你的博客主题中没有 <code>valine</code>，你也可以去 <a href="https://valine.js.org/" target="_blank" rel="noopener">Valine官网</a> 阅读以下文档进行相关配置，只需要添加几行代码，操作起来也是很简单的。</p>
+<hr>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-14T05:18:59.701Z" itemprop="dateUpdated">2019-08-14 13:18:59</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://jy3321.github.io">
+            <img src="/img/avatar.png" alt="焦洋">
+            焦洋
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Valine/">Valine</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jy3321.github.io/2019/08/12/HexoComments/&title=《Hexo博客如何添加评论功能》 — 骄阳焦洋&pic=https://jy3321.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jy3321.github.io/2019/08/12/HexoComments/&title=《Hexo博客如何添加评论功能》 — 骄阳焦洋&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jy3321.github.io/2019/08/12/HexoComments/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo博客如何添加评论功能》 — 骄阳焦洋&url=https://jy3321.github.io/2019/08/12/HexoComments/&via=https://jy3321.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jy3321.github.io/2019/08/12/HexoComments/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/08/12/PortOccupancy/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Windows下如何查看某个端口被谁占用</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/01/DataStructure/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">数据结构基础知识总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "oMYYpfWCE9CzzKCeKeTxMz6p-MdYXbMMI",
+            appKey: "LAMQb9PbvJ4qgACg5YMiLAdO",
+            avatar: "mm",
+            placeholder: "你瞅啥？",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃颗糖呗~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat_code.jpg" data-alipay="/img/alipay_code.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        
+    </div>
+    <div class="bottom">
+        <p><span>焦洋 &copy; 2019 - 2020</span>
+        </p>
+		<p><span>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+        </span></p>
+		<p><span>
+                <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备19013686号</a> 
+        </span></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jy3321.github.io/2019/08/12/HexoComments/&title=《Hexo博客如何添加评论功能》 — 骄阳焦洋&pic=https://jy3321.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jy3321.github.io/2019/08/12/HexoComments/&title=《Hexo博客如何添加评论功能》 — 骄阳焦洋&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jy3321.github.io/2019/08/12/HexoComments/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo博客如何添加评论功能》 — 骄阳焦洋&url=https://jy3321.github.io/2019/08/12/HexoComments/&via=https://jy3321.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jy3321.github.io/2019/08/12/HexoComments/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACM0lEQVR42u3aS27DMAxF0ex/0y7QUQe1eh9pFxB1PSpSRdbJgOBHnw9+ru+H//du/d3Kn5+v39V6ZMiQsS3jWj53a8g+/f3Jd2XIkHEOYx0cSaAku6UBlwduGTJkyFgHu364XO8gQ4YMGSmj9gkP3zJkyJDRKWLTdhgvd9fvergWlyFDxoaM9ED/+feL8w0ZMmRswrhKT21suV7Pg+wv55EhQ8ZoRq2tRg5aSzdJ2w7V4jJkyBjEqF19WIdRPgTtNPWKtzxkyJCxLYNfeqilj/2f6Y+yVoYMGaMZ/IhPjS1r3yXpqQwZMmYz+KJnW/+8DRcPMmXIkDGawV+5PkQtmKaXxuK5qwwZMjZk8FYaKTg718Jq18VkyJBxAiMdQ5Lt0gYcD8HoWzJkyBjK4GkfP24tsNb2kSFDxpmMzhWxdIfO8CC4JytDhozNGbXLFjw0P9XaC7aTIUPGIEZ6taJ28bTWUAuGBDJkyDiG0UkT++G1NsKUIUPGaYxakytN5vgaHqZlyJAxm1ELlGlZm65MkTJkyJjNuBpPf4SQBuUgNZQhQ8YgBh8M9NtqPK1MQ78MGTJmM2pBNi0++Y9SHJfKkCFjNKNfxJJYTlLGtJSVIUPGaQweZHnwTUtQnjIGUw4ZMmSMY/BDpMkfv/LFI2pQpMuQIeNIRjrgrP0QcW4rQ4YMGS80zkgd+krAlSFDxrYMXsTykQAP07V3tWpxGTJkbMVI8y4+4CS82qiyOPeQIUPGfowvGhrhZ0OCcMgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去哪里了？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '你回来干嘛！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

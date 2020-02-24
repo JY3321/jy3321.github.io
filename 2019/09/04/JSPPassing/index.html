@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JSP页面之间传值的方法总结 | 骄阳焦洋 | 明明如月，何时可掇？忧从中来，不可断绝。</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Java,JSP">
+    <meta name="description" content="B/S页面间通信 HTTP是无状态的协议。Web页面本身无法向下一个页面传递信息，如果需要让下一个页面得知该页面中的值，除非通过服务器。因此，Web页面保持状态并传递给其它页面，是一个重要的技术。 Web页面之间传递数据，是Web程序的重要功能，需要：客户端界面（输入信息） → 发送数据 → 服务器 → 响应 → 客户端界面（显示信息） 在HTTP协议中一共有 4种方法来完成这件事情：  URL传">
+<meta name="keywords" content="Java,JSP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP页面之间传值的方法总结">
+<meta property="og:url" content="https://jy3321.github.io/2019/09/04/JSPPassing/index.html">
+<meta property="og:site_name" content="骄阳焦洋">
+<meta property="og:description" content="B/S页面间通信 HTTP是无状态的协议。Web页面本身无法向下一个页面传递信息，如果需要让下一个页面得知该页面中的值，除非通过服务器。因此，Web页面保持状态并传递给其它页面，是一个重要的技术。 Web页面之间传递数据，是Web程序的重要功能，需要：客户端界面（输入信息） → 发送数据 → 服务器 → 响应 → 客户端界面（显示信息） 在HTTP协议中一共有 4种方法来完成这件事情：  URL传">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-04T02:34:31.991Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSP页面之间传值的方法总结">
+<meta name="twitter:description" content="B/S页面间通信 HTTP是无状态的协议。Web页面本身无法向下一个页面传递信息，如果需要让下一个页面得知该页面中的值，除非通过服务器。因此，Web页面保持状态并传递给其它页面，是一个重要的技术。 Web页面之间传递数据，是Web程序的重要功能，需要：客户端界面（输入信息） → 发送数据 → 服务器 → 响应 → 客户端界面（显示信息） 在HTTP协议中一共有 4种方法来完成这件事情：  URL传">
+    
+        <link rel="alternate" type="application/atom+xml" title="骄阳焦洋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/about" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">焦洋</h5>
+          <a href="mailto:821535576@qq.com" title="821535576@qq.com" class="mail">821535576@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JY3321" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JSP页面之间传值的方法总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JSP页面之间传值的方法总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-04T01:07:33.000Z" itemprop="datePublished" class="page-time">
+  2019-09-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#B-S页面间通信"><span class="post-toc-number">1.</span> <span class="post-toc-text">B/S页面间通信</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#URL传值"><span class="post-toc-number">2.</span> <span class="post-toc-text">URL传值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单传值"><span class="post-toc-number">3.</span> <span class="post-toc-text">表单传值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Cookie方法"><span class="post-toc-number">4.</span> <span class="post-toc-text">Cookie方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Session方法"><span class="post-toc-number">5.</span> <span class="post-toc-text">Session方法</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JSPPassing"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JSP页面之间传值的方法总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-04 09:07:33" datetime="2019-09-04T01:07:33.000Z"  itemprop="datePublished">2019-09-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="B-S页面间通信"><a href="#B-S页面间通信" class="headerlink" title="B/S页面间通信"></a>B/S页面间通信</h3><hr>
+<p>HTTP是无状态的协议。Web页面本身无法向下一个页面传递信息，如果需要让下一个页面得知该页面中的值，除非通过服务器。因此，Web页面保持状态并传递给其它页面，是一个重要的技术。</p>
+<p>Web页面之间传递数据，是Web程序的重要功能，需要：<br><strong>客户端界面（输入信息） → 发送数据 → 服务器 → 响应 → 客户端界面（显示信息）</strong></p>
+<p>在HTTP协议中一共有 <strong>4</strong>种方法来完成这件事情：</p>
+<ol>
+<li>URL传值；</li>
+<li>表单传值；</li>
+<li>Cookie方法；</li>
+<li>Session方法；</li>
+</ol>
+<hr>
+<h3 id="URL传值"><a href="#URL传值" class="headerlink" title="URL传值"></a>URL传值</h3><hr>
+<p><strong>优点：</strong><br>简单性和平台支持的多样性（浏览器都支持URL）。<br><strong>缺点：</strong></p>
+<ul>
+<li>传输的数据只能是字符串，对数据类型具有一定的限制；</li>
+<li>传输数据的值会在浏览器地址栏里面被看到，从保密的角度讲，这是不安全的。特别是秘密性要求比较严格的数据，比如说密码。</li>
+</ul>
+<hr>
+<h3 id="表单传值"><a href="#表单传值" class="headerlink" title="表单传值"></a>表单传值</h3><hr>
+<p><strong>优点</strong><br>URL中不会被看到<br><strong>缺点</strong></p>
+<ol>
+<li>和URL方法类似，该方法传输的数据，也只能是字符串，对数据类型具有一定的限制；</li>
+<li>传输数据的值虽然可以保证在浏览器地址栏里不被看到，但是在客户端源代码里面也会被看到，从保密的角度讲，这是不安全的。对于是秘密性要求比较严格的数据，比如说密码来说还是不建议用表单来进行传输。</li>
+</ol>
+<hr>
+<h3 id="Cookie方法"><a href="#Cookie方法" class="headerlink" title="Cookie方法"></a>Cookie方法</h3><hr>
+<p>Cookie是一个小的文本数据，由服务器端生成，发送给客户端浏览器，客户端浏览器如果设置为启用 cookie，则会将这个小文本数据保存到其目录下的文本文件内。客户端下次登录同一网站，浏览器则会自动将 Cookie 读入之后，传给服务器端。服务器端可以对该 Cookie 进行读取并验证(当然也可以不读取)。</p>
+<p>一般情况下，Cookie 中的值是以key-value的形式进行表达的。页面间的传值可以用 Cookie来进行。即：在第一个页面中，将要共享的变量值保存在客户端 Cookie 文件内，在客户端访问第二个页面时，由于浏览器自动将 Cookie读入之后，传给服务器端，因此只需要第二个页面中，由服务器端页面读取这个 Cookie 值即可。</p>
+<p><strong>问题</strong></p>
+<p>在客户端的浏览器上，我们看不到任何的和传递的值相关的信息，说明在客户端浏览器中，Cookie 中的数据是安全的。</p>
+<p>但是就此也不能说 Cookie 是完全安全的。因为 Cookie 是以文件形式保存在客户端的，客户端存储的 Cookie 文件就可能敌方获知。如果将用户名、密码等敏感信息保存在Cookie内，在用户离开客户机时不注意清空，这些信息容易泄露，因此Cookie在保存敏感信息方面具有潜在危险。可以很清楚地看到。</p>
+<p>Cookie的危险性来源于Cookie的被盗取。目前盗取的方法有多种：</p>
+<ul>
+<li>利用跨站脚本技术，将信息发给目标服务器；为了隐藏跨站脚本的 URL，甚至可以结合 Ajax(异步Javascript 和 XML技术)在后台窃取 Cookie；</li>
+<li>通过某些软件，窃取硬盘下的 Cookie。如前所述，当用户访问完某站点后，Cookie文件会存在机器的某个文件夹(如 C:\Documents and Settings\用户名\Cookies)下，因此可以通过某些盗取和分析软件来盗取 Cookie。<pre><code>具体步骤如下：
+(1)利用盗取软件分析系统中的 Cookie，列出用户访问过的网站；
+(2)在这些网站中寻找攻击者感兴趣的网站；
+(3)从该网站的 Cookie 中获取相应的信息。不同的软件有不同的实现方法，有兴趣的读者可以在网上搜索相应的软件；</code></pre></li>
+<li>利用客户端脚本盗取 Cookie。在 Javascript 中有很多 API 可以读取客户端 Cookie，可以将这些代码隐藏在一个程序(如画图片)中，很隐秘地得到 Cookie 的值，不过，这也是跨站脚本的一种实现方式。<br>以上的问题并不能代表Cookie就没有任何用处，Cookie在Web编程中应用的几个方面：<ul>
+<li>Cookie 的值能够持久化，即使客户端机器关闭，下次打开还是可以得到里面的值。因此 Cookie 可以用来减轻用户一些验证工作的输入负担，比如用户名和密码的输入，就可以在第一次登录成功之后，将用户名和密码保存在客户端 Cookie，下次不用输入。当然，这不安全，但是，对于一些安全要求不高的网站，Cookie 还是大有用武之地。</li>
+<li>Cookie可以帮助服务器端保存多个状态信息，但是不用服务器端专门分配存储资源，减轻了服务器端的负担。比如网上商店中的购物车，必须将物品和具体客户名称绑定，但是放在服务器端又需要占据大量资源的情况下，可以用 Cookie 来实现，将每个物品和客户的内容作为 Cookie 来保存在客户端。</li>
+<li>Cookie可以持久保持一些和客户相关的信息。如很多网站上，客户可以自主设计自己的个性化主页，其作用是避免用户每次都需要自己去找自己喜爱的内容，设计好之后，下次打开该网址，主页上显示的是客户设置好的界面。这些设置信息保存在服务器端的话，消耗服务器端的资源，因此，可以将客户的个性化设计保存在 Cookie 内，每一次访问该主页，客户端将 Cookie 发送给服务器端，服务器根据 Cookie 的值来决定显示给客户端什么样的界面。</li>
+</ul>
+</li>
+</ul>
+<p><strong>解决Cookie安全问题</strong></p>
+<ul>
+<li>替代cookie。将数据保存在服务器端，可选的是session方案；</li>
+<li>及时删除cookie，设置失效时间；</li>
+</ul>
+<hr>
+<h3 id="Session方法"><a href="#Session方法" class="headerlink" title="Session方法"></a>Session方法</h3><hr>
+<p><strong>与前三种方法的区别</strong></p>
+<p>前几种方法在传递数据时，有一个共同的问题就是内容保存在客户端里。因此，具有泄露的危险性。如果在不考虑服务器负载的情况下，将数据保存在服务端里，是一个比较好的方法，这就是session方法。<br>通过session.setAttribute(“num”,str);将str存到session中，通过session.getAttribute(“num”);从session中获取num</p>
+<p><strong>服务器如何知道要分配给它的是同一个 session 对象？</strong></p>
+<p>在客户进行第一次访问时，服务器端就给 session 分配了一个 sessionId，并且让客户端记住了这个 sessionId，客户端访问下一个页面时，又将 sessionId 传送给服务器端，服务器端根据这个 sessionId 来找到前一个页面用的 session，由此保证为同一个客户服务的 session 对象是同一个。</p>
+<p><strong>session 分配的具体过程：</strong></p>
+<ol>
+<li>客户端访问服务器，服务器使用 session，首先检查这个客户端的请求里是否已包含了 sessionId；</li>
+<li>如果有，服务器就在内存中检索相应 Id 的 session 来用；</li>
+<li>否则服务器为该客户端创建一个 session 并且生成一个相应的 sessionId，并且在该次响应中返回给客户端保存。</li>
+</ol>
+<p><strong>session的应用</strong><br>session 经常用于保存用户登录状态。比如用户登录成功之后要访问好几个页面，但是每个页面都需要知道是哪个用户在登录，此时就可以将用户的用户名保存在 session 内。</p>
+<p><strong>session的不安全因素</strong><br>session 机制最大的不安全因素是 sessionId 可以被攻击者截获，如果攻击者通过一些手段知道了 sessionId，由于 sessionId 是客户端寻找服务器端 session 对象的唯一标识，攻击者就有可能根据 sesionId 来访问服务器端的 session 对象，得知 session 中的内容，从而实施攻击。</p>
+<p>在 session 机制中，很多人认为：只要浏览器关闭，会话结束，session 就消失了。其实不然，浏览器关闭，会话结束，对于客户端来说，已经无法直接再访问原来的那个 session，但并不代表 session 在服务器端会马上消失。除非程序通知服务器删除一个 session，否则服务器会一直保留这个 session 对象，直到 session 超时失效，被垃圾收集机制收集掉。但是令人遗憾的是，客户在关闭浏览器时，一般不会通知服务器。由于关闭浏览器不会导致 session 被删除，因此，客户端关闭之后，session 还未失效的情况下，就给了攻击者以机会来获取 session 中的内容。</p>
+<p>虽然 sessionId 是随机的长字符串，通常比较难被猜测到，这在某种程度上可以加强其安全性，但是一旦被攻击者获得，就可以进行一些攻击活动，如：攻击者获取客户 sessionId，然后攻击者自行伪造一个相同的 sessionId，访问服务器，实际上等价于伪装成该用户进行操作。</p>
+<p><strong>防止以上因为 sessionId 泄露而造成的安全问题</strong></p>
+<ul>
+<li>在服务器端，可以在客户端登陆系统时，尽量不要使用单一的 sessionId 对用户登陆进行验证。可以通过一定的手段，不时地变更用户的 sessionId；</li>
+<li>在客户端，应该在浏览器关闭时删除服务器端的 session，也就是说在关闭时必须通知服务器端。可以用 Javascript 实现。</li>
+</ul>
+<hr>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-04T02:34:31.991Z" itemprop="dateUpdated">2019-09-04 10:34:31</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://jy3321.github.io">
+            <img src="/img/avatar.png" alt="焦洋">
+            焦洋
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/">JSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jy3321.github.io/2019/09/04/JSPPassing/&title=《JSP页面之间传值的方法总结》 — 骄阳焦洋&pic=https://jy3321.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jy3321.github.io/2019/09/04/JSPPassing/&title=《JSP页面之间传值的方法总结》 — 骄阳焦洋&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jy3321.github.io/2019/09/04/JSPPassing/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JSP页面之间传值的方法总结》 — 骄阳焦洋&url=https://jy3321.github.io/2019/09/04/JSPPassing/&via=https://jy3321.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jy3321.github.io/2019/09/04/JSPPassing/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/09/08/blogsURL/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">值得你读的博客（一起挖宝吧）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/09/02/InterviewQuestion-TryCatch/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java面试题：调用try-catch-finally执行过程是怎样的</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "oMYYpfWCE9CzzKCeKeTxMz6p-MdYXbMMI",
+            appKey: "LAMQb9PbvJ4qgACg5YMiLAdO",
+            avatar: "mm",
+            placeholder: "你瞅啥？",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃颗糖呗~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat_code.jpg" data-alipay="/img/alipay_code.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        
+    </div>
+    <div class="bottom">
+        <p><span>焦洋 &copy; 2019 - 2020</span>
+        </p>
+		<p><span>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+        </span></p>
+		<p><span>
+                <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备19013686号</a> 
+        </span></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jy3321.github.io/2019/09/04/JSPPassing/&title=《JSP页面之间传值的方法总结》 — 骄阳焦洋&pic=https://jy3321.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jy3321.github.io/2019/09/04/JSPPassing/&title=《JSP页面之间传值的方法总结》 — 骄阳焦洋&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jy3321.github.io/2019/09/04/JSPPassing/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JSP页面之间传值的方法总结》 — 骄阳焦洋&url=https://jy3321.github.io/2019/09/04/JSPPassing/&via=https://jy3321.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jy3321.github.io/2019/09/04/JSPPassing/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aS27DMAwFwNz/0uk2QBvnkYwLSBqtisSRPV6w/OjxiNfzZb1+8u6a3+t6t9/fPu5YGBgYyzKS2+efv3voZJ/k+revAAMD4wDGdeDLw+v1NfnO+bNhYGBg9BLBXuDGwMDAuJtRLYOvE0EMDAyMXhGbN8XmZeqNtTgGBsaCjLzr/v9/3zLfwMDAWIoxKUQnDbXkNRWeCgMDY2tG9TbVVK83yGyWxBgYGAcwekPKanMtaZxVC2YMDIwTGEmjfxIc85DdS0kxMDD2ZswHAL3B5yRmlt8QBgbG4oxqujY5GJEfEcsbeRgYGGcyqo+btNXywjg/hIGBgXEOIwms8yD43XHCH99iYGBszchD7eQ2eZCd/BvAwMA4gZG3+8szh+JgIC+JRxNUDAyMpRjVRljS6E92SIL4l5NCDAyMBRn50Ypvlab5kCA/AouBgbE3o5eE9Y6OVYN4XtxiYGDszUhSt3wkkDfFeiH4Q6jFwMDYlJEH0F4yVy1Zey8CAwPjHEbSROsNLyfFbbnphoGBcQyj2uKfjDarw4byzzAwMDZi9JK2yXGN+eEwDAyMExjP4po8aG/wEFExMDC2ZuQrR+YDgPxX83QTAwNjdUYeZKsF53eHlx/2x8DAOIBxX/zuNf3Lu2FgYGAEjCRMVxPEZDiKgYGBMWFMmmvVhBIDA+MERm8YUD3slVNvrMUxMDAWZFSPaiWkfJ+774iBgbE44wf6ftsZnCsGXAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去哪里了？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '你回来干嘛！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

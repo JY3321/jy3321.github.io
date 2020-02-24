@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>计算机网络基础问题 | 骄阳焦洋 | 明明如月，何时可掇？忧从中来，不可断绝。</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="计算机网络">
+    <meta name="description" content="OSI与TCP/IP各层的结构与功能 五层协议的体系结构学习计算机网络时我们一般中和 OSI 和 TCP/IP 的优点，采用一种只有五层协议的体系结构，这样既简洁又能将概念阐述清楚。">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络基础问题">
+<meta property="og:url" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/index.html">
+<meta property="og:site_name" content="骄阳焦洋">
+<meta property="og:description" content="OSI与TCP/IP各层的结构与功能 五层协议的体系结构学习计算机网络时我们一般中和 OSI 和 TCP/IP 的优点，采用一种只有五层协议的体系结构，这样既简洁又能将概念阐述清楚。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/2999225966-5b5f220d89e9c_articlex.png">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/3864529920-56fde9b5acc5a_articlex.gif">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/2016135021-5af6d4854ee92_articlex.png">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/4238626793-5af6d484ce1e4_articlex.jpg">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/2408896382-5af6d484a6ee5_articlex.jpg">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/QQ图片20190829165439.png">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/1018119648-5b76606d2b500_articlex.png">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/3364275969-5b76606cca5ec_articlex.png">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/3260481698-5b76606ce1b7b_articlex.png">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/2459607350-5b76606cc9d8d_articlex.png">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/1982688216-5b76606ccf0d3_articlex.jpg">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/2206504379-5b76606d144fa_articlex.png">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/QQ图片20190829171306.png">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/40813439-5af6d48505a49_articlex.png">
+<meta property="og:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/1376447618-5af6d4856d87a_articlex.png">
+<meta property="og:updated_time" content="2019-08-29T09:24:51.620Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络基础问题">
+<meta name="twitter:description" content="OSI与TCP/IP各层的结构与功能 五层协议的体系结构学习计算机网络时我们一般中和 OSI 和 TCP/IP 的优点，采用一种只有五层协议的体系结构，这样既简洁又能将概念阐述清楚。">
+<meta name="twitter:image" content="https://jy3321.github.io/2019/08/29/ComputerNetwork/2999225966-5b5f220d89e9c_articlex.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="骄阳焦洋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/about" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">焦洋</h5>
+          <a href="mailto:821535576@qq.com" title="821535576@qq.com" class="mail">821535576@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JY3321" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">计算机网络基础问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">计算机网络基础问题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-29T08:22:25.000Z" itemprop="datePublished" class="page-time">
+  2019-08-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OSI与TCP-IP各层的结构与功能"><span class="post-toc-number">1.</span> <span class="post-toc-text">OSI与TCP/IP各层的结构与功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-应用层"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. 应用层</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-运输层"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2. 运输层</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-网络层"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3. 网络层</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-数据链路层"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4. 数据链路层</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-物理层"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">5. 物理层</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#体系结构图"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">体系结构图</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP-三次握手和四次挥手"><span class="post-toc-number">2.</span> <span class="post-toc-text">TCP 三次握手和四次挥手</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图解"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">图解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么要三次握手"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">为什么要三次握手</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么要四次挥手"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">为什么要四次挥手</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么要传回-SYN"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">为什么要传回 SYN</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#传了-SYN-为什么还要传-ACK"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">传了 SYN,为什么还要传 ACK</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP、UDP-协议的区别"><span class="post-toc-number">3.</span> <span class="post-toc-text">TCP、UDP 协议的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP-协议如何保证可靠传输"><span class="post-toc-number">4.</span> <span class="post-toc-text">TCP 协议如何保证可靠传输</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#停止等待协议"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">停止等待协议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-无差错情况"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">1) 无差错情况:</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-出现差错情况（超时重传）"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">2) 出现差错情况（超时重传）:</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-确认丢失和确认迟到"><span class="post-toc-number">4.1.3.</span> <span class="post-toc-text">3) 确认丢失和确认迟到</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#连续ARQ协议"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">连续ARQ协议</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#滑动窗口"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">滑动窗口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#流量控制"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">流量控制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#拥塞控制"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">拥塞控制</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在浏览器中输入url地址-gt-gt-显示主页的过程"><span class="post-toc-number">5.</span> <span class="post-toc-text">在浏览器中输入url地址 -&gt;&gt; 显示主页的过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态码"><span class="post-toc-number">6.</span> <span class="post-toc-text">状态码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#各种协议与HTTP协议之间的关系"><span class="post-toc-number">7.</span> <span class="post-toc-text">各种协议与HTTP协议之间的关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HTTP长连接、短连接"><span class="post-toc-number">8.</span> <span class="post-toc-text">HTTP长连接、短连接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">9.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ComputerNetwork"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">计算机网络基础问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-29 16:22:25" datetime="2019-08-29T08:22:25.000Z"  itemprop="datePublished">2019-08-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <hr>
+<h3 id="OSI与TCP-IP各层的结构与功能"><a href="#OSI与TCP-IP各层的结构与功能" class="headerlink" title="OSI与TCP/IP各层的结构与功能"></a>OSI与TCP/IP各层的结构与功能</h3><hr>
+<p><strong>五层协议的体系结构</strong><br>学习计算机网络时我们一般中和 OSI 和 TCP/IP 的优点，采用一种只有五层协议的体系结构，这样既简洁又能将概念阐述清楚。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/2999225966-5b5f220d89e9c_articlex.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>综合互联网情况，自上而下简要介绍一下各层的作用</p>
+<h4 id="1-应用层"><a href="#1-应用层" class="headerlink" title="1. 应用层"></a>1. 应用层</h4><p><code>应用层(application-layer）的任务是通过应用进程间的交互来完成特定网络应用</code>。应用层协议定义的是应用进程（进程：主机中正在运行的程序）间的通信和交互的规则。对于不同的网络应用需要不同的应用层协议。在互联网中应用层协议很多，如<code>域名系统DNS</code>，支持万维网应用的 <code>HTTP协议</code>，支持电子邮件的 <code>SMTP协议</code>等等。我们把应用层交互的数据单元称为报文。</p>
+<p><strong>域名系统</strong><br>    域名系统(Domain Name System缩写 DNS，Domain Name被译为域名)是因特网的一项核心服务，它作为可以将域名和IP地址相互映射的一个分布式数据库，能够使人更方便的访问互联    网，而不用去记住能够被机器直接读取的IP数串。（百度百科）例如：一个公司的 Web 网站可看作是它在网上的门户，而域名就相当于其门牌地址，通常域名都使用该公司的名称或简称。例如上面提到的微软公司的域名，类似的还有：IBM 公司的域名是 <a href="http://www.ibm.com" target="_blank" rel="noopener">www.ibm.com</a> 、 Oracle 公司的域名是 <a href="http://www.oracle.com" target="_blank" rel="noopener">www.oracle.com</a> 等。</p>
+<p><strong>HTTP协议</strong><br>    超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的 WWW（万维网） 文件都必须遵守这个标准。设计 HTTP 最初的目的是为了提供一种发布和接收 HTML 页面的方法。</p>
+<h4 id="2-运输层"><a href="#2-运输层" class="headerlink" title="2. 运输层"></a>2. 运输层</h4><p><code>运输层(transport layer)的主要任务就是负责向两台主机进程之间的通信提供通用的数据传输服务</code>。应用进程利用该服务传送应用层报文。“通用的”是指并不针对某一个特定的网络应用，而是多种应用可以使用同一个运输层服务。由于一台主机可同时运行多个线程，因此运输层有复用和分用的功能。所谓复用就是指多个应用层进程可同时使用下面运输层的服务，分用和复用相反，是运输层把收到的信息分别交付上面应用层中的相应进程。</p>
+<p><strong>运输层主要使用以下两种协议</strong></p>
+<ul>
+<li>传输控制协议 TCP（Transmisson Control Protocol）–提供面向连接的，可靠的数据传输服务。</li>
+<li>用户数据协议 UDP（User Datagram Protocol）–提供无连接的，尽最大努力的数据传输服务（不保证数据传输的可靠性）。</li>
+</ul>
+<p><strong>UDP 的主要特点</strong></p>
+<ul>
+<li>UDP 是无连接的；</li>
+<li>UDP 使用尽最大努力交付，即不保证可靠交付，因此主机不需要维持复杂的链接状态（这里面有许多参数）；</li>
+<li>UDP 是面向报文的；</li>
+<li>UDP 没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如 直播，实时视频会议等）；</li>
+<li>UDP 支持一对一、一对多、多对一和多对多的交互通信；</li>
+<li>UDP 的首部开销小，只有8个字节，比TCP的20个字节的首部要短。</li>
+</ul>
+<p><strong>TCP 的主要特点</strong></p>
+<ul>
+<li>TCP 是面向连接的。（就好像打电话一样，通话前需要先拨号建立连接，通话结束后要挂机释放连接）；</li>
+<li>每一条 TCP 连接只能有两个端点，每一条TCP连接只能是点对点的（一对一）；</li>
+<li>TCP 提供可靠交付的服务。通过TCP连接传送的数据，无差错、不丢失、不重复、并且按序到达；</li>
+<li>TCP 提供全双工通信。TCP 允许通信双方的应用进程在任何时候都能发送数据。TCP 连接的两端都设有发送缓存和接收缓存，用来临时存放双方通信的数据；</li>
+<li>面向字节流。TCP 中的“流”（Stream）指的是流入进程或从进程流出的字节序列。“面向字节流”的含义是：虽然应用程序和 TCP 的交互是一次一个数据块（大小不等），但 TCP 把应用程序交下来的数据仅仅看成是一连串的无结构的字节流。</li>
+</ul>
+<h4 id="3-网络层"><a href="#3-网络层" class="headerlink" title="3. 网络层"></a>3. 网络层</h4><p><code>网络层(network layer)负责为分组交换网上的不同主机提供通信服务</code>。 在发送数据时，网络层把运输层产生的报文段或用户数据报封装成分组和包进行传送。在 TCP/IP 体系结构中，由于网络层使用<code>IP 协议</code>，因此分组也叫<code>IP 数据报</code> ，简称 <code>数据报</code>。</p>
+<p><code>这里要注意：不要把运输层的“用户数据报 UDP ”和网络层的“ IP 数据报”弄混</code>。另外，无论是哪一层的数据单元，都可笼统地用“分组”来表示。</p>
+<p>网络层的另一个任务就是选择合适的路由，使源主机运输层所传下来的分株，能通过网络层中的路由器找到目的主机。</p>
+<p>这里强调指出，网络层中的“网络”二字已经不是我们通常谈到的具体网络，而是指计算机网络体系结构模型中第三层的名称.</p>
+<p>互联网是由大量的异构（heterogeneous）网络通过路由器（router）相互连接起来的。互联网使用的网络层协议是无连接的网际协议（Intert Prococol）和许多路由选择协议，因此互联网的网络层也叫做网际层或IP层。</p>
+<h4 id="4-数据链路层"><a href="#4-数据链路层" class="headerlink" title="4. 数据链路层"></a>4. 数据链路层</h4><p><code>数据链路层(data link layer)通常简称为链路层。两台主机之间的数据传输，总是在一段一段的链路上传送的，这就需要使用专门的链路层的协议</code>。 在两个相邻节点之间传送数据时，<code>数据链路层将网络层交下来的 IP 数据报组装程帧</code>，在两个相邻节点间的链路上传送帧。每一帧包括数据和必要的控制信息（如同步信息，地址信息，差错控制等）。</p>
+<p>在接收数据时，控制信息使接收端能够知道一个帧从哪个比特开始和到哪个比特结束。这样，数据链路层在收到一个帧后，就可从中提出数据部分，上交给网络层。<br>控制信息还使接收端能够检测到所收到的帧中有误差错。如果发现差错，数据链路层就简单地丢弃这个出了差错的帧，以避免继续在网络中传送下去白白浪费网络资源。如果需要改正数据在链路层传输时出现差错（这就是说，数据链路层不仅要检错，而且还要纠错），那么就要采用可靠性传输协议来纠正出现的差错。这种方法会使链路层的协议复杂些。</p>
+<h4 id="5-物理层"><a href="#5-物理层" class="headerlink" title="5. 物理层"></a>5. 物理层</h4><p><code>物理层(physical layer)的作用是实现相邻计算机节点之间比特流的透明传送，尽可能屏蔽掉具体传输介质和物理设备的差异</code>。 使其上面的数据链路层不必考虑网络的具体传输介质是什么。“透明传送比特流”表示经实际电路传送后的比特流没有发生变化，对传送的比特流来说，这个电路好像是看不见的。</p>
+<p>在物理层上所传送的数据单位是比特。</p>
+<p>在互联网使用的各种协中最重要和最著名的就是 TCP/IP 两个协议。现在人们经常提到的TCP/IP并不一定单指TCP和IP这两个具体的协议，而往往表示互联网所使用的整个TCP/IP协议族。</p>
+<h4 id="体系结构图"><a href="#体系结构图" class="headerlink" title="体系结构图"></a>体系结构图</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/3864529920-56fde9b5acc5a_articlex.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>图片来源及OSI相关知识点参考博客 ：<a href="https://blog.csdn.net/yaopeng_2005/article/details/7064869" target="_blank" rel="noopener">https://blog.csdn.net/yaopeng_2005/article/details/7064869</a></p>
+<hr>
+<h3 id="TCP-三次握手和四次挥手"><a href="#TCP-三次握手和四次挥手" class="headerlink" title="TCP 三次握手和四次挥手"></a>TCP 三次握手和四次挥手</h3><hr>
+<h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><p>为了准确无误地把数据送达目标处，TCP协议采用了三次握手策略。<br><strong>三次握手：</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/2016135021-5af6d4854ee92_articlex.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>图片来源：《图解HTTP》</p>
+<p><img src="/2019/08/29/ComputerNetwork/4238626793-5af6d484ce1e4_articlex.jpg" alt></p>
+<ul>
+<li>客户端–发送带有 SYN 标志的数据包–一次握手–服务端</li>
+<li>服务端–发送带有 SYN/ACK 标志的数据包–二次握手–客户端</li>
+<li>客户端–发送带有带有 ACK 标志的数据包–三次握手–服务端</li>
+</ul>
+<p><strong>四次挥手</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/2408896382-5af6d484a6ee5_articlex.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>断开一个 TCP 连接则需要“四次挥手”</p>
+<ul>
+<li>客户端-发送一个 FIN，用来关闭客户端到服务器的数据传送</li>
+<li>服务器-收到这个 FIN，它发回一 个 ACK，确认序号为收到的序号加1 。和 SYN 一样，一个 FIN 将占用一个序号</li>
+<li>服务器-关闭与客户端的连接，发送一个FIN给客户端</li>
+<li>客户端-发回 ACK 报文确认，并将确认序号设置为收到序号加1</li>
+</ul>
+<h4 id="为什么要三次握手"><a href="#为什么要三次握手" class="headerlink" title="为什么要三次握手"></a>为什么要三次握手</h4><p><code>三次握手的目的是建立可靠的通信信道，说到通讯，简单来说就是数据的发送与接收，而三次握手最主要的目的就是双方确认自己与对方的发送与接收是正常的。</code></p>
+<p>第一次握手：Client 什么都不能确认；Server 确认了对方发送正常</p>
+<p>第二次握手：Client 确认了：自己发送、接收正常，对方发送、接收正常；Server 确认了：自己接收正常，对方发送正常</p>
+<p>第三次握手：Client 确认了：自己发送、接收正常，对方发送、接收正常；Server 确认了：自己发送、接收正常，对方发送接收正常</p>
+<p>所以三次握手就能确认双发收发功能都正常，缺一不可。</p>
+<h4 id="为什么要四次挥手"><a href="#为什么要四次挥手" class="headerlink" title="为什么要四次挥手"></a>为什么要四次挥手</h4><p>任何一方都可以在数据传送结束后发出连接释放的通知，待对方确认后进入半关闭状态。当另一方也没有数据再发送的时候，则发出连接释放通知，对方确认后就完全关闭了TCP连接。</p>
+<p>举个例子：A 和 B 打电话，通话即将结束后，A 说“我没啥要说的了”，B回答“我知道了”，但是 B 可能还会有要说的话，A 不能要求 B 跟着自己的节奏结束通话，于是 B 可能又巴拉巴拉说了一通，最后 B 说“我说完了”，A 回答“知道了”，这样通话才算结束。</p>
+<p>推荐参考一篇讲的比较细致的文章：<a href="https://blog.csdn.net/qzcsu/article/details/72861891" target="_blank" rel="noopener">https://blog.csdn.net/qzcsu/article/details/72861891</a></p>
+<h4 id="为什么要传回-SYN"><a href="#为什么要传回-SYN" class="headerlink" title="为什么要传回 SYN"></a>为什么要传回 SYN</h4><p>接收端传回发送端所发送的 SYN 是为了告诉发送端，我接收到的信息确实就是你所发送的信号了。</p>
+<h4 id="传了-SYN-为什么还要传-ACK"><a href="#传了-SYN-为什么还要传-ACK" class="headerlink" title="传了 SYN,为什么还要传 ACK"></a>传了 SYN,为什么还要传 ACK</h4><p>双方通信无误必须是两者互相发送信息都无误。传了 SYN，证明发送方到接收方的通道没有问题，但是接收方到发送方的通道还需要 ACK 信号来进行验证。</p>
+<hr>
+<h3 id="TCP、UDP-协议的区别"><a href="#TCP、UDP-协议的区别" class="headerlink" title="TCP、UDP 协议的区别"></a>TCP、UDP 协议的区别</h3><hr>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/QQ图片20190829165439.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>UDP 在传送数据之前不需要先建立连接，远地主机在收到 UDP 报文后，不需要给出任何确认。虽然 UDP 不提供可靠交付，但在某些情况下 UDP 确是一种最有效的工作方式（一般用于即时通信），比如： QQ 语音、 QQ 视频 、直播等等</p>
+<p>TCP 提供面向连接的服务。在传送数据之前必须先建立连接，数据传送结束后要释放连接。 TCP 不提供广播或多播服务。由于 TCP 要提供可靠的，面向连接的运输服务（TCP的可靠体现在TCP在传递数据之前，会有三次握手来建立连接，而且在数据传递时，有确认、窗口、重传、拥塞控制机制，在数据传完后，还会断开连接用来节约系统资源），这一难以避免增加了许多开销，如确认，流量控制，计时器以及连接管理等。这不仅使协议数据单元的首部增大很多，还要占用许多处理机资源。TCP 一般用于文件传输、发送和接收邮件、远程登录等场景。</p>
+<hr>
+<h3 id="TCP-协议如何保证可靠传输"><a href="#TCP-协议如何保证可靠传输" class="headerlink" title="TCP 协议如何保证可靠传输"></a>TCP 协议如何保证可靠传输</h3><hr>
+<ol>
+<li>应用数据被分割成 TCP 认为最适合发送的数据块。</li>
+<li>TCP 给发送的每一个包进行编号，接收方对数据包进行排序，把有序数据传送给应用层。</li>
+<li>校验和： TCP 将保持它首部和数据的检验和。这是一个端到端的检验和，目的是检测数据在传输过程中的任何变化。如果收到段的检验和有差错，TCP 将丢弃这个报文段和不确认收到此报文段。</li>
+<li>TCP 的接收端会丢弃重复的数据。</li>
+<li>流量控制： TCP 连接的每一方都有固定大小的缓冲空间，TCP的接收端只允许发送端发送接收端缓冲区能接纳的数据。当接收方来不及处理发送方的数据，能提示发送方降低发送的速率，防止包丢失。TCP 使用的流量控制协议是可变大小的滑动窗口协议。 （TCP 利用滑动窗口实现流量控制）</li>
+<li>拥塞控制： 当网络拥塞时，减少数据的发送。</li>
+<li>停止等待协议 也是为了实现可靠传输的，它的基本原理就是每发完一个分组就停止发送，等待对方确认。在收到确认后再发下一个分组。 超时重传： 当 TCP 发出一个段后，它启动一个定时器，等待目的端确认收到这个报文段。如果不能及时收到一个确认，将重发这个报文段。</li>
+</ol>
+<h4 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h4><p>停止等待协议是为了实现可靠传输的，它的基本原理就是每发完一个分组就停止发送，等待对方确认。在收到确认后再发下一个分组；<br>在停止等待协议中，若接收方收到重复分组，就丢弃该分组，但同时还要发送确认；</p>
+<h5 id="1-无差错情况"><a href="#1-无差错情况" class="headerlink" title="1) 无差错情况:"></a>1) 无差错情况:</h5><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/1018119648-5b76606d2b500_articlex.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>发送方发送分组,接收方在规定时间内收到,并且回复确认.发送方再次发送。</p>
+<h5 id="2-出现差错情况（超时重传）"><a href="#2-出现差错情况（超时重传）" class="headerlink" title="2) 出现差错情况（超时重传）:"></a>2) 出现差错情况（超时重传）:</h5><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/3364275969-5b76606cca5ec_articlex.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>停止等待协议中超时重传是指只要超过一段时间仍然没有收到确认，就重传前面发送过的分组（认为刚才发送过的分组丢失了）。因此每发送完一个分组需要设置一个超时计时器，其重转时间应比数据在分组传输的平均往返时间更长一些。这种自动重传方式常称为 自动重传请求 ARQ 。另外在停止等待协议中若收到重复分组，就丢弃该分组，但同时还要发送确认。连续 ARQ 协议 可提高信道利用率。发送维持一个发送窗口，凡位于发送窗口内的分组可连续发送出去，而不需要等待对方确认。接收方一般采用累积确认，对按序到达的最后一个分组发送确认，表明到这个分组位置的所有分组都已经正确收到了。</p>
+<h5 id="3-确认丢失和确认迟到"><a href="#3-确认丢失和确认迟到" class="headerlink" title="3) 确认丢失和确认迟到"></a>3) 确认丢失和确认迟到</h5><ul>
+<li><p>确认丢失：确认消息在传输过程丢失</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/3260481698-5b76606ce1b7b_articlex.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>当A发送M1消息，B收到后，B向A发送了一个M1确认消息，但却在传输过程中丢失。而A并不知道，在超时计时过后，A重传M1消息，B再次收到该消息后采取以下两点措施：</p>
+<ol>
+<li>丢弃这个重复的M1消息，不向上层交付。</li>
+<li>向A发送确认消息。（不会认为已经发送过了，就不再发送。A能重传，就证明B的确认消息丢失）。</li>
+</ol>
+</li>
+<li><p>确认迟到 ：确认消息在传输过程中迟到</p>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/2459607350-5b76606cc9d8d_articlex.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>A发送M1消息，B收到并发送确认。在超时时间内没有收到确认消息，A重传M1消息，B仍然收到并继续发送确认消息（B收到了2份M1）。此时A收到了B第二次发送的确认消息。接着发送其他数据。过了一会，A收到了B第一次发送的对M1的确认消息（A也收到了2份确认消息）。处理如下：</p>
+<pre><code>1. A收到重复的确认后，直接丢弃。
+2. B收到重复的M1后，也直接丢弃重复的M1。</code></pre><h4 id="连续ARQ协议"><a href="#连续ARQ协议" class="headerlink" title="连续ARQ协议"></a>连续ARQ协议</h4><p>连续 ARQ 协议可提高信道利用率。发送方维持一个发送窗口，凡位于发送窗口内的分组可以连续发送出去，而不需要等待对方确认。接收方一般采用累计确认，对按序到达的最后一个分组发送确认，表明到这个分组为止的所有分组都已经正确收到了。</p>
+<p><strong>优点：</strong> 信道利用率高，容易实现，即使确认丢失，也不必重传。</p>
+<p><strong>缺点：</strong> 不能向发送方反映出接收方已经正确收到的所有分组的信息。 比如：发送方发送了 5条 消息，中间第三条丢失（3号），这时接收方只能对前两个发送确认。发送方无法知道后三个分组的下落，而只好把后三个全部重传一次。这也叫 Go-Back-N（回退 N），表示需要退回来重传已经发送过的 N 个消息。</p>
+<h4 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h4><ul>
+<li><p>TCP 利用滑动窗口实现流量控制的机制。</p>
+</li>
+<li><p>滑动窗口（Sliding window）是一种流量控制技术。早期的网络通信中，通信双方不会考虑网络的拥挤情况直接发送数据。由于大家不知道网络拥塞状况，同时发送数据，导致中间节点阻塞掉包，谁也发不了数据，所以就有了滑动窗口机制来解决此问题。</p>
+</li>
+<li><p>TCP 中采用滑动窗口来进行传输控制，滑动窗口的大小意味着接收方还有多大的缓冲区可以用于接收数据。发送方可以通过滑动窗口的大小来确定应该发送多少字节的数据。当滑动窗口为 0 时，发送方一般不能再发送数据报，但有两种情况除外，一种情况是可以发送紧急数据，例如，允许用户终止在远端机上的运行进程。另一种情况是发送方可以发送一个 1 字节的数据报来通知接收方重新声明它希望接收的下一字节及发送方的滑动窗口大小。</p>
+</li>
+</ul>
+<h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><ul>
+<li><p>TCP 利用滑动窗口实现流量控制。</p>
+</li>
+<li><p>流量控制是为了控制发送方发送速率，保证接收方来得及接收。</p>
+</li>
+<li><p>接收方发送的确认报文中的窗口字段可以用来控制发送方窗口大小，从而影响发送方的发送速率。将窗口字段设置为 0，则发送方不能发送数据。</p>
+</li>
+</ul>
+<h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><p>在某段时间，若对网络中某一资源的需求超过了该资源所能提供的可用部分，网络的性能就要变坏。这种情况就叫拥塞。拥塞控制就是为了防止过多的数据注入到网络中，这样就可以使网络中的路由器或链路不致过载。拥塞控制所要做的都有一个前提，就是网络能够承受现有的网络负荷。拥塞控制是一个全局性的过程，涉及到所有的主机，所有的路由器，以及与降低网络传输性能有关的所有因素。相反，流量控制往往是点对点通信量的控制，是个端到端的问题。流量控制所要做到的就是抑制发送端发送数据的速率，以便使接收端来得及接收。</p>
+<p>为了进行拥塞控制，TCP 发送方要维持一个 <code>拥塞窗口(cwnd)</code>的状态变量。拥塞控制窗口的大小取决于网络的拥塞程度，并且动态变化。发送方让自己的发送窗口取为拥塞窗口和接收方的接受窗口中较小的一个。</p>
+<p>TCP的拥塞控制采用了四种算法，即 <code>慢开始 、 拥塞避免 、快重传</code> 和 <code>快恢复</code>。在网络层也可以使路由器采用适当的分组丢弃策略（如主动队列管理 AQM），以减少网络拥塞的发生。</p>
+<ul>
+<li>慢开始  慢开始算法的思路是当主机开始发送数据时，如果立即把大量数据字节注入到网络，那么可能会引起网络阻塞，因为现在还不知道网络的符合情况。经验表明，较好的方法是先探测一下，即由小到大逐渐增大发送窗口，也就是由小到大逐渐增大拥塞窗口数值。cwnd初始值为1，每经过一个传播轮次，cwnd加倍。</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/1982688216-5b76606ccf0d3_articlex.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<ul>
+<li>拥塞避免： 拥塞避免算法的思路是让拥塞窗口cwnd缓慢增大，即每经过一个往返时间RTT就把发送放的cwnd加1.</li>
+<li>快重传与快恢复：在 TCP/IP 中，快速重传和恢复（fast retransmit and recovery，FRR）是一种拥塞控制算法，它能快速恢复丢失的数据包。没有 FRR，如果数据包丢失了，TCP 将会使用定时器来要求传输暂停。在暂停的这段时间内，没有新的或复制的数据包被发送。有了 FRR，如果接收机接收到一个不按顺序的数据段，它会立即给发送机发送一个重复确认。如果发送机接收到三个重复确认，它会假定确认件指出的数据段丢失了，并立即重传这些丢失的数据段。有了 FRR，就不会因为重传时要求的暂停被耽误。 　当有单独的数据包丢失时，快速重传和恢复（FRR）能最有效地工作。当有多个数据信息包在某一段很短的时间内丢失时，它则不能很有效地工作。</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/2206504379-5b76606d144fa_articlex.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<hr>
+<h3 id="在浏览器中输入url地址-gt-gt-显示主页的过程"><a href="#在浏览器中输入url地址-gt-gt-显示主页的过程" class="headerlink" title="在浏览器中输入url地址 -&gt;&gt; 显示主页的过程"></a>在浏览器中输入url地址 -&gt;&gt; 显示主页的过程</h3><hr>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/QQ图片20190829171306.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<hr>
+<h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><hr>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/40813439-5af6d48505a49_articlex.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<hr>
+<h3 id="各种协议与HTTP协议之间的关系"><a href="#各种协议与HTTP协议之间的关系" class="headerlink" title="各种协议与HTTP协议之间的关系"></a>各种协议与HTTP协议之间的关系</h3><hr>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/08/29/ComputerNetwork/1376447618-5af6d4856d87a_articlex.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>图片来源：《图解HTTP》</p>
+<hr>
+<h3 id="HTTP长连接、短连接"><a href="#HTTP长连接、短连接" class="headerlink" title="HTTP长连接、短连接"></a>HTTP长连接、短连接</h3><hr>
+<p>在HTTP/1.0中默认使用短连接。也就是说，客户端和服务器每进行一次HTTP操作，就建立一次连接，任务结束就中断连接。当客户端浏览器访问的某个HTML或其他类型的Web页中包含有其他的Web资源（如JavaScript文件、图像文件、CSS文件等），每遇到这样一个Web资源，浏览器就会重新建立一个HTTP会话。</p>
+<p>而从HTTP/1.1起，默认使用长连接，用以保持连接特性。使用长连接的HTTP协议，会在响应头加入这行代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection:keep-alive</span><br></pre></td></tr></table></figure>
+
+<p>在使用长连接的情况下，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，客户端再次访问这个服务器时，会继续使用这一条已经建立的连接。Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。实现长连接需要客户端和服务端都支持长连接。</p>
+<p><strong>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接。</strong><br>参考文章：<a href="https://www.cnblogs.com/gotodsp/p/6366163.html" target="_blank" rel="noopener">https://www.cnblogs.com/gotodsp/p/6366163.html</a></p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><hr>
+<p>问题：</p>
+<ul>
+<li>TCP三次握手和四次挥手、</li>
+<li>在浏览器中输入url地址-&gt;&gt;显示主页的过程</li>
+<li>HTTP和HTTPS的区别</li>
+<li>TCP、UDP协议的区别</li>
+<li>常见的状态码。</li>
+</ul>
+<p>参考了大量网上的资料及回答，部分引用内容下有参考博客的连接，文中大部分的图片来自于《图解HTTP》 。</p>
+<hr>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-29T09:24:51.620Z" itemprop="dateUpdated">2019-08-29 17:24:51</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://jy3321.github.io">
+            <img src="/img/avatar.png" alt="焦洋">
+            焦洋
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jy3321.github.io/2019/08/29/ComputerNetwork/&title=《计算机网络基础问题》 — 骄阳焦洋&pic=https://jy3321.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jy3321.github.io/2019/08/29/ComputerNetwork/&title=《计算机网络基础问题》 — 骄阳焦洋&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jy3321.github.io/2019/08/29/ComputerNetwork/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《计算机网络基础问题》 — 骄阳焦洋&url=https://jy3321.github.io/2019/08/29/ComputerNetwork/&via=https://jy3321.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jy3321.github.io/2019/08/29/ComputerNetwork/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/09/01/AlgorithmicProblems/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">算法题目整理（持续添加更新）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/23/Override/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java中@Override的作用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "oMYYpfWCE9CzzKCeKeTxMz6p-MdYXbMMI",
+            appKey: "LAMQb9PbvJ4qgACg5YMiLAdO",
+            avatar: "mm",
+            placeholder: "你瞅啥？",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃颗糖呗~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat_code.jpg" data-alipay="/img/alipay_code.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        
+    </div>
+    <div class="bottom">
+        <p><span>焦洋 &copy; 2019 - 2020</span>
+        </p>
+		<p><span>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+        </span></p>
+		<p><span>
+                <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备19013686号</a> 
+        </span></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jy3321.github.io/2019/08/29/ComputerNetwork/&title=《计算机网络基础问题》 — 骄阳焦洋&pic=https://jy3321.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jy3321.github.io/2019/08/29/ComputerNetwork/&title=《计算机网络基础问题》 — 骄阳焦洋&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jy3321.github.io/2019/08/29/ComputerNetwork/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《计算机网络基础问题》 — 骄阳焦洋&url=https://jy3321.github.io/2019/08/29/ComputerNetwork/&via=https://jy3321.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jy3321.github.io/2019/08/29/ComputerNetwork/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aS27DMAxFUe9/0+60QGvlPtIOYOpqFKSOpdMBwY+OA6/z1+JPXj1P/no8sWTIkPFaxrlcVxuT45Jd/h59vcvljjJkyNiAsQ58PAiSX62fSd8gQ4YMGesgmD5fC7gyZMiQ0Q+4/BAkxZQhQ4aMThHbaYqtw/RXa3EZMmS8kNEpTZ/+/Mh8Q4YMGa9inOGqNc46oRmdSoYMGaMZPMC1yssw4audR4YMGVMZpIlWA/BjkfL4A0yGDBkbMPglMH702uWJ2lhUhgwZsxlp+ONsMp6sDRLi7qAMGTJezqgFWXJtgl+tuKFIliFDxmgGCYtpkK1FRTJaiEtZGTJkjGDwi6QczFt1tQL4nzfIkCFjG8ZdKWP6BvKPQ11DGTJkjGbUOnM8+KaNvHiEIEOGjC0ZPIEjSWRnFIG+kSFDxmgG37jWsk9TwDRNvJx1yJAhYxyDjCrT45JGP38mSBBlyJAxlMEDLg+atWsZJPlD40wZMmRswEjHAJ0RQnrZQoYMGXsyaulabahZu4SB2DJkyNiAkQa4uy6Hpc04VIvLkCFjKIM35WtpXz8B/fArGTJkDGWc4UpDKm/xt6gyZMgYzagFytoFC87jxW0MkyFDxmsZdwXZzlyi834ZMmTsw+gHvs44oTYolSFDhgx+9DSkkiyVJ6MyZMiQwQcDJLlMh5dBiJchQ8YGjPQQtY1J2lcMxzJkyBjN4KVjrdBN38lJMmTI2IDxA7KTnTuD+MoEAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去哪里了？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '你回来干嘛！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

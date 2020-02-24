@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>HTTP和HTTPS协议分别是什么 | 骄阳焦洋 | 明明如月，何时可掇？忧从中来，不可断绝。</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="计算机网络,HTTP,HTTPS">
+    <meta name="description" content="一、什么是协议？ (网络)协议是计算机之间为了实现网络通信而达成的一种“约定”或者”规则“，有了这种”约定“，不同厂商的生产设备，以及不同操作系统组成的计算机之间，就可以实现通信。  二、HTTP协议是什么？ HTTP协议是超文本传输协议的缩写，英文是Hyper Text Transfer Protocol。它是从WEB服务器传输超文本标记语言(HTML)到本地浏览器的传送协议。 设计HTTP最">
+<meta name="keywords" content="计算机网络,HTTP,HTTPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP和HTTPS协议分别是什么">
+<meta property="og:url" content="https://jy3321.github.io/2019/08/16/http-https/index.html">
+<meta property="og:site_name" content="骄阳焦洋">
+<meta property="og:description" content="一、什么是协议？ (网络)协议是计算机之间为了实现网络通信而达成的一种“约定”或者”规则“，有了这种”约定“，不同厂商的生产设备，以及不同操作系统组成的计算机之间，就可以实现通信。  二、HTTP协议是什么？ HTTP协议是超文本传输协议的缩写，英文是Hyper Text Transfer Protocol。它是从WEB服务器传输超文本标记语言(HTML)到本地浏览器的传送协议。 设计HTTP最">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-22T02:51:00.657Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP和HTTPS协议分别是什么">
+<meta name="twitter:description" content="一、什么是协议？ (网络)协议是计算机之间为了实现网络通信而达成的一种“约定”或者”规则“，有了这种”约定“，不同厂商的生产设备，以及不同操作系统组成的计算机之间，就可以实现通信。  二、HTTP协议是什么？ HTTP协议是超文本传输协议的缩写，英文是Hyper Text Transfer Protocol。它是从WEB服务器传输超文本标记语言(HTML)到本地浏览器的传送协议。 设计HTTP最">
+    
+        <link rel="alternate" type="application/atom+xml" title="骄阳焦洋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/about" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">焦洋</h5>
+          <a href="mailto:821535576@qq.com" title="821535576@qq.com" class="mail">821535576@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JY3321" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">HTTP和HTTPS协议分别是什么</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">HTTP和HTTPS协议分别是什么</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-16T07:49:03.000Z" itemprop="datePublished" class="page-time">
+  2019-08-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、什么是协议？"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、什么是协议？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、HTTP协议是什么？"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、HTTP协议是什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三、HTTP原理"><span class="post-toc-number">3.</span> <span class="post-toc-text">三、HTTP原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四、HTTP特点"><span class="post-toc-number">4.</span> <span class="post-toc-text">四、HTTP特点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五、URI和URL的区别"><span class="post-toc-number">5.</span> <span class="post-toc-text">五、URI和URL的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#六、HTTP报文组成"><span class="post-toc-number">6.</span> <span class="post-toc-text">六、HTTP报文组成</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请求报文构成"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">请求报文构成</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#响应报文构成"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">响应报文构成</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#七、常见请求方法"><span class="post-toc-number">7.</span> <span class="post-toc-text">七、常见请求方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#八、响应状态码"><span class="post-toc-number">8.</span> <span class="post-toc-text">八、响应状态码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#状态码分类："><span class="post-toc-number">8.1.</span> <span class="post-toc-text">状态码分类：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常见状态码："><span class="post-toc-number">8.2.</span> <span class="post-toc-text">常见状态码：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#九、为什么要用HTTPS？"><span class="post-toc-number">9.</span> <span class="post-toc-text">九、为什么要用HTTPS？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一般http中存在如下问题："><span class="post-toc-number">9.1.</span> <span class="post-toc-text">一般http中存在如下问题：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#十、什么是HTTPS"><span class="post-toc-number">10.</span> <span class="post-toc-text">十、什么是HTTPS?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#十、什么是HTTPS-1"><span class="post-toc-number">11.</span> <span class="post-toc-text">十、什么是HTTPS?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#十一、浏览器在使用HTTPS传输数据的流程是什么？"><span class="post-toc-number">12.</span> <span class="post-toc-text">十一、浏览器在使用HTTPS传输数据的流程是什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#十二、HTTPS的缺点"><span class="post-toc-number">13.</span> <span class="post-toc-text">十二、HTTPS的缺点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#十三、总结HTTPS和HTTP的区别"><span class="post-toc-number">14.</span> <span class="post-toc-text">十三、总结HTTPS和HTTP的区别</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-http-https"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">HTTP和HTTPS协议分别是什么</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-16 15:49:03" datetime="2019-08-16T07:49:03.000Z"  itemprop="datePublished">2019-08-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <hr>
+<h3 id="一、什么是协议？"><a href="#一、什么是协议？" class="headerlink" title="一、什么是协议？"></a>一、什么是协议？</h3><hr>
+<p>(网络)协议是计算机之间为了实现网络通信而达成的一种“约定”或者”规则“，有了这种”约定“，不同厂商的生产设备，以及不同操作系统组成的计算机之间，就可以实现通信。</p>
+<hr>
+<h3 id="二、HTTP协议是什么？"><a href="#二、HTTP协议是什么？" class="headerlink" title="二、HTTP协议是什么？"></a>二、HTTP协议是什么？</h3><hr>
+<p><strong>HTTP协议</strong>是<strong>超文本传输协议</strong>的缩写，英文是Hyper Text Transfer Protocol。它是从WEB服务器传输超文本标记语言(HTML)到本地浏览器的传送协议。</p>
+<p>设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。</p>
+<p>HTPP有多个版本，目前广泛使用的是HTTP/1.1版本。</p>
+<hr>
+<h3 id="三、HTTP原理"><a href="#三、HTTP原理" class="headerlink" title="三、HTTP原理"></a>三、HTTP原理</h3><hr>
+<p>HTTP是一个基于TCP/IP通信协议来传递数据的协议，传输的数据类型为HTML 文件,、图片文件, 查询结果等。</p>
+<p>HTTP协议一般用于B/S架构（）。浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。</p>
+<p>以访问百度：<code>www.baidu.com</code> 为例：</p>
+<ul>
+<li><ol>
+<li><code>客户端</code> 将 <code>www.baidu.com</code> DNS域名解析为服务器IP</li>
+</ol>
+</li>
+<li><ol start="2">
+<li><code>客户端</code> 发起TCP请求，3次握手建立连接</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><code>客户端</code>发出HTTP请求</li>
+</ol>
+</li>
+<li><ol start="4">
+<li><code>服务器端</code> 进行HTTP响应</li>
+</ol>
+</li>
+<li><ol start="5">
+<li><code>客户端</code>将响应得到的HTML代码和资源值渲染到前端给用户</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="四、HTTP特点"><a href="#四、HTTP特点" class="headerlink" title="四、HTTP特点"></a>四、HTTP特点</h3><hr>
+<ol>
+<li>http协议支持客户端/服务端模式，也是一种请求/响应模式的协议。</li>
+<li>简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。</li>
+<li>灵活：HTTP允许传输任意类型的数据对象。传输的类型由Content-Type加以标记。</li>
+<li>无连接：限制每次连接只处理一个请求。服务器处理完请求，并收到客户的应答后，即断开连接，但是却不利于客户端与服务器保持会话连接，为了弥补这种不足，产生了两项记录http状态的技术，一个叫做<strong>Cookie</strong> ,一个叫做<strong>Session</strong>。</li>
+<li>无状态：无状态是指协议对于事务处理没有记忆，后续处理需要前面的信息，则必须重传。</li>
+</ol>
+<hr>
+<h3 id="五、URI和URL的区别"><a href="#五、URI和URL的区别" class="headerlink" title="五、URI和URL的区别"></a>五、URI和URL的区别</h3><hr>
+<p>HTTP使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。</p>
+<ul>
+<li>URI：Uniform Resource Identifier 统一资源<strong>标识符</strong></li>
+<li>URL：Uniform Resource Location 统一资源<strong>定位符</strong></li>
+</ul>
+<p>URI 是用来标示 一个具体的资源的，我们可以通过 URI 知道一个资源是什么。</p>
+<p>URL 则是用来定位具体的资源的，标示了一个具体的资源位置。互联网上的每个文件都有一个唯一的URL。</p>
+<hr>
+<h3 id="六、HTTP报文组成"><a href="#六、HTTP报文组成" class="headerlink" title="六、HTTP报文组成"></a>六、HTTP报文组成</h3><hr>
+<h4 id="请求报文构成"><a href="#请求报文构成" class="headerlink" title="请求报文构成"></a>请求报文构成</h4><ol>
+<li>请求行：包括请求方法、URL、协议/版本</li>
+<li>请求头(Request Header)</li>
+<li>请求正文</li>
+</ol>
+<h4 id="响应报文构成"><a href="#响应报文构成" class="headerlink" title="响应报文构成"></a>响应报文构成</h4><ol>
+<li>状态行</li>
+<li>响应头</li>
+<li>响应正文</li>
+</ol>
+<hr>
+<h3 id="七、常见请求方法"><a href="#七、常见请求方法" class="headerlink" title="七、常见请求方法"></a>七、常见请求方法</h3><hr>
+<ul>
+<li>(网络)协议是计算机之间为了实现网络通信而达成的一种“约定”或者”规则“GET:请求指定的页面信息，并返回实体主体。</li>
+<li>POST:向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。</li>
+<li>HEAD:类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头</li>
+<li>PUT:从客户端向服务器传送的数据取代指定的文档的内容。</li>
+<li>DELETE:请求服务器删除指定的页面。，有了这种”约定“，不同厂商的生产设备，以及不同操作系统组成的计算机之间，就可以实现通信。</li>
+</ul>
+<p><strong>post和get的区别：</strong></p>
+<ul>
+<li>都包含请求头请求行，post多了请求body。</li>
+<li>get多用来查询，请求参数放在url中，不会对服务器上的内容产生作用。post用来提交，如把账号密码放入body中。</li>
+<li>GET是直接添加到URL后面的，直接就可以在URL中看到内容，而POST是放在报文内部的，用户无法直接看到。</li>
+<li>GET提交的数据长度是有限制的，因为URL长度有限制，具体的长度限制视浏览器而定。而POST没有。</li>
+</ul>
+<hr>
+<h3 id="八、响应状态码"><a href="#八、响应状态码" class="headerlink" title="八、响应状态码"></a>八、响应状态码</h3><hr>
+<pre><code>访问一个网页时，浏览器会向web服务器发出请求。此网页所在的服务器会返回一个包含HTTP状态码的信息头用以响应浏览器的请求。    </code></pre><h4 id="状态码分类："><a href="#状态码分类：" class="headerlink" title="状态码分类："></a>状态码分类：</h4><ul>
+<li>1XX- 信息型，服务器收到请求，需要请求者继续操作。</li>
+<li>2XX- 成功型，请求成功收到，理解并处理。</li>
+<li>3XX - 重定向，需要进一步的操作以完成请求。</li>
+<li>4XX - 客户端错误，请求包含语法错误或无法完成请求。</li>
+<li>5XX - 服务器错误，服务器在处理请求的过程中发生了错误。</li>
+</ul>
+<h4 id="常见状态码："><a href="#常见状态码：" class="headerlink" title="常见状态码："></a>常见状态码：</h4><ul>
+<li>200 OK - 客户端请求成功</li>
+<li>301 - 资源（网页等）被永久转移到其它URL</li>
+<li>302 - 临时跳转</li>
+<li>400 Bad Request - 客户端请求有语法错误，不能被服务器所理解</li>
+<li>401 Unauthorized - 请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用</li>
+<li>404 - 请求资源不存在，可能是输入了错误的URL</li>
+<li>500 - 服务器内部发生了不可预期的错误</li>
+<li>503 Server Unavailable - 服务器当前不能处理客户端的请求，一段时间后可能恢复正常。</li>
+</ul>
+<hr>
+<h3 id="九、为什么要用HTTPS？"><a href="#九、为什么要用HTTPS？" class="headerlink" title="九、为什么要用HTTPS？"></a>九、为什么要用HTTPS？</h3><hr>
+<p>实际使用中，绝大说的网站现在都采用的是https协议，这也是未来互联网发展的趋势。因为当使用HTTP协议传输一些内容的时候，比如登录过程，访问的账号密码都是明文传输， 这样客户端发出的请求很容易被不法分子截取利用，因此，HTTP协议不适合传输一些敏感信息，比如：各种账号、密码等信息，使用http协议传输隐私信息非常不安全。</p>
+<h4 id="一般http中存在如下问题："><a href="#一般http中存在如下问题：" class="headerlink" title="一般http中存在如下问题："></a>一般http中存在如下问题：</h4><ol>
+<li>请求信息明文传输，容易被窃听截取。</li>
+<li>数据的完整性未校验，容易被篡改</li>
+<li>没有验证对方身份，存在冒充危险</li>
+</ol>
+<hr>
+<h3 id="十、什么是HTTPS"><a href="#十、什么是HTTPS" class="headerlink" title="十、什么是HTTPS?"></a>十、什么是HTTPS?</h3><hr>
+<p>为了解决上述HTTP存在的问题，就用到了HTTPS。</p>
+<p>HTTPS 协议（HyperText Transfer Protocol over Secure Socket Layer）：一般理解为<strong>HTTP+SSL/TLS</strong>，通过 SSL证书来验证服务器的身份，并为浏览器和服务器之间的通信进行加密。</p>
+<p><strong>那么SSL又是什么？</strong></p>
+<p>SSL（Secure Socket Layer，安全套接字层）：1994年为 Netscape 所研发，SSL 协议位于 TCP/IP 协议与各种应用层协议之间，为数据通讯提供安全支持。</p>
+<p>TLS（Transport Layer Security，传输层安全）：其前身是 SSL，它最初的几个版本（SSL 1.0、SSL 2.0、SSL 3.0）由网景公司开发，1999年从 3.1 开始被 IETF 标准化并改名，发展至今已经有 TLS 1.0、TLS 1.1、TLS 1.2 三个版本。SSL3.0和TLS1.0由于存在安全漏洞，已经很少被使用到。TLS 1.3 改动会比较大，目前还在草案阶段，目前使用最广泛的是TLS 1.1、TLS 1.2。</p>
+<p><strong>SSL发展史（互联网加密通信）</strong></p>
+<ol>
+<li>1994年NetSpace公司设计SSL协议（Secure Sockets Layout）1.0版本，但未发布。</li>
+<li>1995年NetSpace发布SSL/2.0版本，很快发现有严重漏洞</li>
+<li>1996年发布SSL/3.0版本，得到大规模应用</li>
+<li>1999年，发布了SSL升级版TLS/1.0版本，目前应用最广泛的版本</li>
+<li>2006年和2008年，发布了TLS/1.1版本和TLS/1.2版本</li>
+</ol>
+<hr>
+<h3 id="十、什么是HTTPS-1"><a href="#十、什么是HTTPS-1" class="headerlink" title="十、什么是HTTPS?"></a>十、什么是HTTPS?</h3><hr>
+<p>(网络)协议是计算机之间为了实现网络通信而达成的一种“约定”或者”规则“，有了这种”约定“，不同厂商的生产设备，以及不同操作系统组成的计算机之间，就可以实现通信。</p>
+<hr>
+<h3 id="十一、浏览器在使用HTTPS传输数据的流程是什么？"><a href="#十一、浏览器在使用HTTPS传输数据的流程是什么？" class="headerlink" title="十一、浏览器在使用HTTPS传输数据的流程是什么？"></a>十一、浏览器在使用HTTPS传输数据的流程是什么？</h3><hr>
+<ol>
+<li>首先<code>客户端</code>通过URL访问服务器建立SSL连接。</li>
+<li><code>服务端</code>收到客户端请求后，会将网站支持的证书信息（证书中包含公钥）传送一份给客户端。</li>
+<li><code>客户端的服务器</code>开始协商SSL连接的安全等级，也就是信息加密的等级。</li>
+<li><code>客户端的浏览器</code>根据双方同意的安全等级，建立会话密钥，然后利用网站的公钥将会话密钥加密，并传送给网站。</li>
+<li><code>服务器</code>利用自己的私钥解密出会话密钥。</li>
+<li><code>服务器</code>利用会话密钥加密与客户端之间的通信。</li>
+</ol>
+<hr>
+<h3 id="十二、HTTPS的缺点"><a href="#十二、HTTPS的缺点" class="headerlink" title="十二、HTTPS的缺点"></a>十二、HTTPS的缺点</h3><hr>
+<ul>
+<li>HTTPS协议多次握手，导致页面的加载时间延长近50%；</li>
+<li>HTTPS连接缓存不如HTTP高效，会增加数据开销和功耗；</li>
+<li>申请SSL证书需要钱，功能越强大的证书费用越高。</li>
+<li>SSL涉及到的安全算法会消耗 CPU 资源，对服务器资源消耗较大。</li>
+</ul>
+<hr>
+<h3 id="十三、总结HTTPS和HTTP的区别"><a href="#十三、总结HTTPS和HTTP的区别" class="headerlink" title="十三、总结HTTPS和HTTP的区别"></a>十三、总结HTTPS和HTTP的区别</h3><hr>
+<ul>
+<li>HTTPS是HTTP协议的安全版本，HTTP协议的数据传输是明文的，是不安全的，HTTPS使用了SSL/TLS协议进行了加密处理。</li>
+<li>http和https使用连接方式不同，默认端口也不一样，http是80，https是443。</li>
+</ul>
+<hr>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-22T02:51:00.657Z" itemprop="dateUpdated">2019-08-22 10:51:00</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://jy3321.github.io">
+            <img src="/img/avatar.png" alt="焦洋">
+            焦洋
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jy3321.github.io/2019/08/16/http-https/&title=《HTTP和HTTPS协议分别是什么》 — 骄阳焦洋&pic=https://jy3321.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jy3321.github.io/2019/08/16/http-https/&title=《HTTP和HTTPS协议分别是什么》 — 骄阳焦洋&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jy3321.github.io/2019/08/16/http-https/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HTTP和HTTPS协议分别是什么》 — 骄阳焦洋&url=https://jy3321.github.io/2019/08/16/http-https/&via=https://jy3321.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jy3321.github.io/2019/08/16/http-https/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/08/18/StackAndHeap/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Java内存机制及堆和栈的区别</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/13/HexoThemes/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hexo博客Indigo主题安装</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "oMYYpfWCE9CzzKCeKeTxMz6p-MdYXbMMI",
+            appKey: "LAMQb9PbvJ4qgACg5YMiLAdO",
+            avatar: "mm",
+            placeholder: "你瞅啥？",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃颗糖呗~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat_code.jpg" data-alipay="/img/alipay_code.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        
+    </div>
+    <div class="bottom">
+        <p><span>焦洋 &copy; 2019 - 2020</span>
+        </p>
+		<p><span>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+        </span></p>
+		<p><span>
+                <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备19013686号</a> 
+        </span></p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://jy3321.github.io/2019/08/16/http-https/&title=《HTTP和HTTPS协议分别是什么》 — 骄阳焦洋&pic=https://jy3321.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://jy3321.github.io/2019/08/16/http-https/&title=《HTTP和HTTPS协议分别是什么》 — 骄阳焦洋&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://jy3321.github.io/2019/08/16/http-https/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HTTP和HTTPS协议分别是什么》 — 骄阳焦洋&url=https://jy3321.github.io/2019/08/16/http-https/&via=https://jy3321.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://jy3321.github.io/2019/08/16/http-https/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aQW6EMAwF0Ln/pekFSubbhpEIL6uqjQiPhWs7/nzidZysZM/ZzvVZnzsWBgbGYxnJ8Udxnb3W+snr/etTMDAw3sBYB77eo9cf5ez09V9Pf4+BgYGx3JOH4N7vMTAwMHqM0xQtqDHzPRgYGBjVInaCTBLNH9XiGBgYD2Tk4fL3P99yv4GBgfEoRq/dXy0+k9c6BgsDA2NvRu+YvHGWXGT20j4MDIz3MCajFfPmWlIeRx8aAwPjZYxkbKJwQDFk99pwGBgYb2D0wt/k4rNa0H7uiNkYGBgPYURDDK1wOUlALwjxGBgY2zGqww3VBC6pN/P9hVtWDAyMLRhJoz8PvlcNalT/DWBgYOzN6A1AVEvWPAXMA265UsfAwNiCMXndvA3XSzELl6MYGBibMnpBMD+s+kLN8QsMDIxNGfllZM7ufaBeGvrPzAgGBsZ2jMm4Q29sotfO6+3BwMDYgzEfcZgnf0ewvjwTAwNja0ZSKF4109FL+EbDYRgYGBsxqk35u68BqheZGBgY72EkLfj8r9XWWPUjlh+BgYGxEaOatN3Y8+tNi2BgYGzHOIprUo5Wy9r8w2FgYOzNmAe73nhEfjk6STcxMDB2YuRBdtIaS2DVUQ8MDIy3MaqBL0/grhoy+/I0DAwMjPhF8wGOyUjZadMNAwMDY3Al0CuD84QSAwPjDYzeZcD6RZMnV0P2BbU4BgbGAxl56Ti/Ysz3X3UiBgbGwxl/Wxf6CM1L5A4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去哪里了？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '你回来干嘛！';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

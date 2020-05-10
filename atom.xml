@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jy3321.github.io/"/>
-  <updated>2020-03-15T13:40:46.111Z</updated>
+  <updated>2020-05-10T07:08:13.604Z</updated>
   <id>https://jy3321.github.io/</id>
   
   <author>
@@ -17,11 +17,63 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>重启大法好（记最近一件又蠢又好笑的事）</title>
+    <link href="https://jy3321.github.io/2020/05/10/%E9%87%8D%E5%90%AF%E5%A4%A7%E6%B3%95%E5%A5%BD%EF%BC%88%E8%AE%B0%E6%9C%80%E8%BF%91%E4%B8%80%E4%BB%B6%E5%8F%88%E8%A0%A2%E5%8F%88%E5%A5%BD%E7%AC%91%E7%9A%84%E4%BA%8B%EF%BC%89/"/>
+    <id>https://jy3321.github.io/2020/05/10/重启大法好（记最近一件又蠢又好笑的事）/</id>
+    <published>2020-05-10T06:52:36.000Z</published>
+    <updated>2020-05-10T07:08:13.604Z</updated>
+    
+    <content type="html"><![CDATA[<p>昨天晚上自己项目好好的，今天跑的时候，项目一运行主页就是自己的页面找不到了的页面，由于之前项目刚在本地运行的时候也出现过这样的问题，就怀疑是数据库配置有问题，反复改了很多次，甚至把项目重新导入从头重新建配置，反复多次尝试多种方式，无果。后来直接去看看数据库。打开Navicat时发现报错ERROR 2013：Lost connection to MySQL server，意思就是我数据库都连接不上了？ ？去网上查了这个报错怎么解决，方法试了都无果，知道看到一篇帖子里的说法：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2020/05/10/重启大法好（记最近一件又蠢又好笑的事）/2ef28f49717aa3c98ea057eb735bb41" alt title>                </div>                <div class="image-caption"></div>            </figure><p>跟我一样，各种方法尝试无果，然后，重启？？<br>行吧我试一下，卧槽？？<br>好吧就是这样，重启一下电脑项目就能正常访问数据库，显示内容了。</p><p>就这样一个问题让我郁闷了一早上，自己真的是又想笑又无奈。也该反思一下自己是不是学傻了，思维都固化了，明明前一天晚上可以运行，就说明代码没有问题，今天出问题应该从环境上找问题，而不是怀疑自己去改自己的配置和代码。。</p><p>记得之前去看摩天营救的时候，整部电影啥都没记住，就记住了那句重启就好了的梗。没想到今天自己也成了这个梗。嗯，以后要记得，重启大法好。哈哈。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;昨天晚上自己项目好好的，今天跑的时候，项目一运行主页就是自己的页面找不到了的页面，由于之前项目刚在本地运行的时候也出现过这样的问题，就怀疑是数据库配置有问题，反复改了很多次，甚至把项目重新导入从头重新建配置，反复多次尝试多种方式，无果。后来直接去看看数据库。打开Navica
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://jy3321.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="日常" scheme="https://jy3321.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用数据库JDBC驱动名称及URL</title>
+    <link href="https://jy3321.github.io/2020/05/10/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93JDBC%E9%A9%B1%E5%8A%A8%E5%90%8D%E7%A7%B0%E5%8F%8AURL/"/>
+    <id>https://jy3321.github.io/2020/05/10/常用数据库JDBC驱动名称及URL/</id>
+    <published>2020-05-10T06:46:36.000Z</published>
+    <updated>2020-05-10T06:49:30.402Z</updated>
+    
+    <content type="html"><![CDATA[<p>为方便使用JDBC连接各种数据库，特对常用的数据库driverClassName和url进行整理，方便自己查阅和使用。</p><p><img src="/2020/05/10/常用数据库JDBC驱动名称及URL/385309935.png" alt></p><p>需要注意的是MySQL版本不同驱动和URL也不一致，并且MySQL 6.0 及其以上的版本url后面必须加上参数<strong>serverTimezone=UTC</strong>；不加则会报错。</p><p>除此之外还可选加参数(多个参数之间用&amp;连接)：<code>useUnicode=true</code>；<code>characterEncoding=utf8</code> ; <code>useSSL=false</code>,但一般建议加上，如果不加useSSL不会出错但有警告。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;为方便使用JDBC连接各种数据库，特对常用的数据库driverClassName和url进行整理，方便自己查阅和使用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2020/05/10/常用数据库JDBC驱动名称及URL/385309935.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;需要注
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://jy3321.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="数据库" scheme="https://jy3321.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>最近二三事</title>
     <link href="https://jy3321.github.io/2019/11/26/twoOrThreeRecentEvents/"/>
     <id>https://jy3321.github.io/2019/11/26/twoOrThreeRecentEvents/</id>
     <published>2019-11-26T11:57:13.000Z</published>
-    <updated>2020-03-15T13:40:46.111Z</updated>
+    <updated>2020-05-10T07:09:53.687Z</updated>
     
     <content type="html"><![CDATA[<p>其实最近有一段时间没有捣鼓自己的博客了，各种原因吧，自己反省了一下最近这段时间做的事，感觉自己又把最宝贵的时间浪费了过去。。写点东西总结一下最近的自己吧。</p><p>几个月前，自己满心欢喜的搭建起了这个博客，然后特别特别的想让自己的博客里有文章，就去看别人的博客，学着写东西，有些内容自己甚至不是很理解，觉得别人写的特别好就写在了自己的博客里，觉得很有成就感很有满足感，但是完全忘记了自己搭建这个博客的最初目的——记录自己的学习，帮助自己更好的学习。因为有些内容自己现在看甚至都已经忘记了当时为什么那样总结为什么那样写，只是当时为了写博客而写的，并没有深入的去理解去学习，比如之前明明有看了内存模型相关的知识甚至写了博客，在面试字节的时候被问到回答的还是一塌糊涂，甚至在问到类加载机制的时候，我竟然忘了static初始化顺序，简单的一道判断初始化顺序的题也能回答错误（不知道当时面试官是不是都想嘲笑我…反正我觉得自己当时好丢人…static是在类被初始化的时候执行的，java初始化正确的顺序应该是：父类静态成员变量→父类静态代码块→子类静态成员变量→子类静态代码块→父类非静态成员变量→父类非静态代码块→父类构造函数→子类非静态成员变量→子类非静态代码块→子类构造函数）。自己光顾着看光顾着写，而忘记了更重要的要自己去理解去思考。在秋招经历了几个大厂的惨烈面试之后，我自闭了很久。自己差的真的太多了，除了基础知识差，要补充要学习的东西也真的太多，以至于在后面的面试，我都没有信心再去参加面试，自己一度放弃了秋招。。</p><p>一直到最近一个月，和自己一起开始准备秋招的室友，拿到了offer，工资极其可观诱人，酸死了。。看看人家，在酸的同时，仿佛又给自己打了鸡血，同样都是一个学校一个班甚至一个宿舍的，他能做到，我为什么不能做到。也就是最近开始，自己才又开始正视自己的问题，去LeetCode上刷题，去牛客上看面经，拿出以前买的书一页一页的看，正如室友讲的，学就完事了，血本有归就行。也许秋招真的要错过了，但是努力，应该会有结果的。</p><p>自己这段时间又对博客感兴趣起来了，想重新尝试下别的框架搭博客，觉Hexo没有后台没有自带的文章编辑器，使用起来好像没那么方便？原来觉得好看的排版和主题，现在看起来好像也没那么顺眼了？想试试Hago和WordPress？？好像Unity也蛮好玩的，自己也想试试学着做小游戏？？？。。。可是要找工作啊大哥！在秋招的时候发现一堆好玩的东西，我发现自己老是在一些关键时刻发现一些好玩有意思的事，然后去分心影响正事，为什么没早点发现啊。不过还要吐槽一下学校，大四了还是满课，课程作业全是报告，上万字的那种，然后还有各种各样的图。。无奈。争取把这段时间熬过去吧，秋招让我太痛苦了。后面调整好心态继续努力复习，刷题看知识点，看看秋招补录，实在不行准备春招，自己多准备准备应该也会有机会的吧。抽空把课程作业补完，最近可能不太更新自己的博客了，如果要更，也要保证后面更新的东西都会是自己思考理解了的东西再进行更新。后面可能会重新搭一下博客，如果找工作能顺利一点的话，我是说如果，再慢慢捣鼓吧。。</p>]]></content>
     
@@ -35,10 +87,10 @@
     
     </summary>
     
-      <category term="日记" scheme="https://jy3321.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
+      <category term="日常" scheme="https://jy3321.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-      <category term="日记" scheme="https://jy3321.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
+      <category term="日常" scheme="https://jy3321.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
@@ -47,7 +99,7 @@
     <link href="https://jy3321.github.io/2019/11/22/UMLclass/"/>
     <id>https://jy3321.github.io/2019/11/22/UMLclass/</id>
     <published>2019-11-22T02:55:25.000Z</published>
-    <updated>2019-11-22T03:22:38.472Z</updated>
+    <updated>2020-05-10T07:11:18.842Z</updated>
     
     <content type="html"><![CDATA[<h3 id="从一个示例开始"><a href="#从一个示例开始" class="headerlink" title="从一个示例开始"></a>从一个示例开始</h3><hr><p>我们通过一个例子来理解</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/11/22/UMLclass/uml_class_struct.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure><ul><li>车的类图结构为&lt; abstract &gt;，表示车是一个抽象类；</li><li>它有两个继承类：小汽车和自行车；它们之间的关系为实现关系，使用带空心箭头的虚线表示；</li><li>小汽车为与SUV之间也是继承关系，它们之间的关系为泛化关系，使用带空心箭头的实线表示；</li><li>小汽车与发动机之间是组合关系，使用带实心箭头的实线表示；</li><li>学生与班级之间是聚合关系，使用带空心箭头的实线表示；</li><li>学生与身份证之间为关联关系，使用一根实线表示；</li><li>学生上学需要用到自行车，与自行车是一种依赖关系，使用带箭头的虚线表示；</li></ul><p>下面我们将介绍这六种关系；</p><hr><h3 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h3><hr><h4 id="泛化关系-generalization"><a href="#泛化关系-generalization" class="headerlink" title="泛化关系(generalization)"></a>泛化关系(generalization)</h4><p>类的继承结构表现在UML中为：泛化(generalize)与实现(realize)：</p><p>继承关系为 is-a的关系；两个对象之间如果可以用 is-a 来表示，就是继承关系：（..是..)</p><p>eg：自行车是车、猫是动物</p><p>泛化关系用一条带空心箭头的直接表示；如下图表示（A继承自B）；</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/11/22/UMLclass/uml_generalization.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure><p>eg：汽车在现实中有实现，可用汽车定义具体的对象；汽车与SUV之间为泛化关系；</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/11/22/UMLclass/uml_generalize.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure><p>注：最终代码中，泛化关系表现为继承非抽象类；</p><h4 id="实现关系-realize"><a href="#实现关系-realize" class="headerlink" title="实现关系(realize)"></a>实现关系(realize)</h4><p>实现关系用一条带空心箭头的虚线表示；</p><p>eg：”车”为一个抽象概念，在现实中并无法直接用来定义对象；只有指明具体的子类(汽车还是自行车)，才 可以用来定义对象（”车”这个类在C++中用抽象类表示，在JAVA中有接口这个概念，更容易理解）</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/11/22/UMLclass/uml_realize.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure><p>注：最终代码中，实现关系表现为继承抽象类；</p><h4 id="聚合关系-aggregation"><a href="#聚合关系-aggregation" class="headerlink" title="聚合关系(aggregation)"></a>聚合关系(aggregation)</h4><p>聚合关系用一条带空心菱形箭头的直线表示，如下图表示A聚合到B上，或者说B由A组成；</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/11/22/UMLclass/uml_aggregation.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure><p>聚合关系用于表示实体对象之间的关系，表示整体由部分构成的语义；例如一个部门由多个员工组成；</p><p>与组合关系不同的是，整体和部分不是强依赖的，即使整体不存在了，部分仍然存在；例如， 部门撤销了，人员不会消失，他们依然存在；</p><h4 id="组合关系-composition"><a href="#组合关系-composition" class="headerlink" title="组合关系(composition)"></a>组合关系(composition)</h4><p>组合关系用一条带实心菱形箭头直线表示，如下图表示A组成B，或者B由A组成；</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/11/22/UMLclass/uml_composition.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure><p>与聚合关系一样，组合关系同样表示整体由部分构成的语义；比如公司由多个部门组成；</p><p>但组合关系是一种强依赖的特殊聚合关系，如果整体不存在了，则部分也不存在了；例如， 公司不存在了，部门也将不存在了；</p><h4 id="关联关系-association"><a href="#关联关系-association" class="headerlink" title="关联关系(association)"></a>关联关系(association)</h4><p>关联关系是用一条直线表示的；它描述不同类的对象之间的结构关系；它是一种静态关系， 通常与运行状态无关，一般由常识等因素决定的；它一般用来定义对象之间静态的、天然的结构； 所以，关联关系是一种“强关联”的关系；</p><p>比如，乘车人和车票之间就是一种关联关系；学生和学校就是一种关联关系；</p><p>关联关系默认不强调方向，表示对象间相互知道；如果特别强调方向，如下图，表示A知道B，但 B不知道A；</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/11/22/UMLclass/uml_association.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure><p>注：在最终代码中，关联对象通常是以成员变量的形式实现的；</p><h4 id="依赖关系-dependency"><a href="#依赖关系-dependency" class="headerlink" title="依赖关系(dependency)"></a>依赖关系(dependency)</h4><p>依赖关系是用一套带箭头的虚线表示的；如下图表示A依赖于B；他描述一个对象在运行期间会用到另一个对象的关系；</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/11/22/UMLclass/uml_dependency.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure><p>与关联关系不同的是，它是一种临时性的关系，通常在运行期间产生，并且随着运行时的变化； 依赖关系也可能发生变化；</p><p>显然，依赖也有方向，双向依赖是一种非常糟糕的结构，我们总是应该保持单向依赖，杜绝双向依赖的产生；</p><p>注：在最终代码中，依赖关系体现为类构造方法及类方法的传入参数，箭头的指向为调用关系；依赖关系除了临时知道对方外，还是“使用”对方的方法和属性；</p><hr><p>感谢：<a href="https://design-patterns.readthedocs.io/" target="_blank" rel="noopener">https://design-patterns.readthedocs.io/</a></p>]]></content>
     
@@ -65,7 +117,7 @@
       <category term="UML" scheme="https://jy3321.github.io/categories/UML/"/>
     
     
-      <category term="UNL" scheme="https://jy3321.github.io/tags/UNL/"/>
+      <category term="UML" scheme="https://jy3321.github.io/tags/UML/"/>
     
   </entry>
   
@@ -417,32 +469,6 @@
   </entry>
   
   <entry>
-    <title>Windows下如何查看某个端口被谁占用</title>
-    <link href="https://jy3321.github.io/2019/08/12/PortOccupancy/"/>
-    <id>https://jy3321.github.io/2019/08/12/PortOccupancy/</id>
-    <published>2019-08-11T16:00:00.000Z</published>
-    <updated>2019-08-12T07:16:29.347Z</updated>
-    
-    <content type="html"><![CDATA[<p>我们以4000端口为例：</p><p>1.按下 <code>Win+R</code> 再输 入<code>cmd</code> 调出命令行窗口，输入 <code>netstat -aon|findstr &quot;4000&quot;</code> ，找到指定行最后一列的数字 <code>（PID）</code> ，我们这里是 <code>8364</code> .<br>2.输入 <code>tasklist|findstr &quot;8364&quot;</code> ，发现是 <code>node.exe</code> 占用了4000端口。<br>3.再次输入 <code>taskkill /f /t /im node.exe</code> 结束该进程。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/08/12/PortOccupancy/QQ图片20190812141332.png" alt="QQ图片20190812141332" title>                </div>                <div class="image-caption">QQ图片20190812141332</div>            </figure><p>当然第二第三步你也可以再任务管理中进行操作，只需要第一步 <code>netstat -aon|findstr &quot;4000&quot;</code> 找到PID，在任务管理器中PID一列找到对应的进程并把它结束就可以了。如果任务管理器中没有PID这一列，右键单击列头，勾选PID这一列就可以看到了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;我们以4000端口为例：&lt;/p&gt;
-&lt;p&gt;1.按下 &lt;code&gt;Win+R&lt;/code&gt; 再输 入&lt;code&gt;cmd&lt;/code&gt; 调出命令行窗口，输入 &lt;code&gt;netstat -aon|findstr &amp;quot;4000&amp;quot;&lt;/code&gt; ，找到指定行最后一列
-      
-    
-    </summary>
-    
-      <category term="Windows" scheme="https://jy3321.github.io/categories/Windows/"/>
-    
-    
-      <category term="Windows" scheme="https://jy3321.github.io/tags/Windows/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hexo博客如何添加评论功能</title>
     <link href="https://jy3321.github.io/2019/08/12/HexoComments/"/>
     <id>https://jy3321.github.io/2019/08/12/HexoComments/</id>
@@ -467,6 +493,32 @@
       <category term="Hexo" scheme="https://jy3321.github.io/tags/Hexo/"/>
     
       <category term="Valine" scheme="https://jy3321.github.io/tags/Valine/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows下如何查看某个端口被谁占用</title>
+    <link href="https://jy3321.github.io/2019/08/12/PortOccupancy/"/>
+    <id>https://jy3321.github.io/2019/08/12/PortOccupancy/</id>
+    <published>2019-08-11T16:00:00.000Z</published>
+    <updated>2019-08-12T07:16:29.347Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们以4000端口为例：</p><p>1.按下 <code>Win+R</code> 再输 入<code>cmd</code> 调出命令行窗口，输入 <code>netstat -aon|findstr &quot;4000&quot;</code> ，找到指定行最后一列的数字 <code>（PID）</code> ，我们这里是 <code>8364</code> .<br>2.输入 <code>tasklist|findstr &quot;8364&quot;</code> ，发现是 <code>node.exe</code> 占用了4000端口。<br>3.再次输入 <code>taskkill /f /t /im node.exe</code> 结束该进程。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/08/12/PortOccupancy/QQ图片20190812141332.png" alt="QQ图片20190812141332" title>                </div>                <div class="image-caption">QQ图片20190812141332</div>            </figure><p>当然第二第三步你也可以再任务管理中进行操作，只需要第一步 <code>netstat -aon|findstr &quot;4000&quot;</code> 找到PID，在任务管理器中PID一列找到对应的进程并把它结束就可以了。如果任务管理器中没有PID这一列，右键单击列头，勾选PID这一列就可以看到了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我们以4000端口为例：&lt;/p&gt;
+&lt;p&gt;1.按下 &lt;code&gt;Win+R&lt;/code&gt; 再输 入&lt;code&gt;cmd&lt;/code&gt; 调出命令行窗口，输入 &lt;code&gt;netstat -aon|findstr &amp;quot;4000&amp;quot;&lt;/code&gt; ，找到指定行最后一列
+      
+    
+    </summary>
+    
+      <category term="Windows" scheme="https://jy3321.github.io/categories/Windows/"/>
+    
+    
+      <category term="Windows" scheme="https://jy3321.github.io/tags/Windows/"/>
     
   </entry>
   
@@ -520,31 +572,6 @@
       <category term="Hexo" scheme="https://jy3321.github.io/tags/Hexo/"/>
     
       <category term="GitHub" scheme="https://jy3321.github.io/tags/GitHub/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello Word！</title>
-    <link href="https://jy3321.github.io/2019/07/23/hi-blogs/"/>
-    <id>https://jy3321.github.io/2019/07/23/hi-blogs/</id>
-    <published>2019-07-22T16:00:00.000Z</published>
-    <updated>2019-08-14T03:41:59.871Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Hello-Word！"><a href="#Hello-Word！" class="headerlink" title="Hello Word！"></a>Hello Word！</h2><p>&emsp;&emsp;博客当然也要从一篇Hello Word开始！</p><hr><p>&emsp;&emsp;自己在学习的过程中其实一直想记录点什么，学习笔记，或者知识点总结，又或是自己突然冒出的想法。这些事情如果不记录，随着时间的推移，很快就会忘记，而如果有所记录，在某个时刻再去翻看它的时候，不仅能够帮助自己回忆，还能够有别样的感触。</p><p>&emsp;&emsp;在博客之前是用印象笔记记了一些杂七杂八的东西，由于这个暑假面临着秋招，自己又要重新复习和总结知识点，紧张有压力的同时也突然莫名的兴奋，像打了鸡血一样想搭建一个自己的博客，边复习边记录一些东西，在几经波折之后，有了现在的这个博客。</p><p>&emsp;&emsp;今后将用这个博客来记录自己，可能是学习中的知识总结、可能是编程的技术、也可能是自己的日常或者其它的东西。自己之前确实很迷茫，虚度了很多时间，但是我觉得，只要从当下开始行动，就不算晚。我会通过这个博客，沉淀、积累，并且不断的鞭策自己，认真的对待每一件事情，把每一件事情都去努力做好。</p><p>&emsp;&emsp;喜欢的东西很贵，想去的地方很远，要做的工作很难，想给自己爱的人更多，不想辜负别人，更不想负了自己。</p><p>&emsp;&emsp;世上没有易事一说，而所谓的难事，其实也没有那么的难。人生苦短，既然来了，就坦荡潇洒的走他一遭。</p><p>&emsp;&emsp;那么，焦洋，加油！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Hello-Word！&quot;&gt;&lt;a href=&quot;#Hello-Word！&quot; class=&quot;headerlink&quot; title=&quot;Hello Word！&quot;&gt;&lt;/a&gt;Hello Word！&lt;/h2&gt;&lt;p&gt;&amp;emsp;&amp;emsp;博客当然也要从一篇Hello Word开始！
-      
-    
-    </summary>
-    
-      <category term="Hello Word！" scheme="https://jy3321.github.io/categories/Hello-Word%EF%BC%81/"/>
-    
-    
-      <category term="Hello Word！" scheme="https://jy3321.github.io/tags/Hello-Word%EF%BC%81/"/>
     
   </entry>
   

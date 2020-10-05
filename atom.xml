@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jy3321.github.io/"/>
-  <updated>2020-10-04T03:23:33.731Z</updated>
+  <updated>2020-10-05T05:36:10.914Z</updated>
   <id>https://jy3321.github.io/</id>
   
   <author>
@@ -21,9 +21,19 @@
     <link href="https://jy3321.github.io/2020/10/04/git-bash%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     <id>https://jy3321.github.io/2020/10/04/git-bash中的快捷键/</id>
     <published>2020-10-04T03:22:19.000Z</published>
-    <updated>2020-10-04T03:23:33.731Z</updated>
+    <updated>2020-10-05T05:36:10.914Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><ul><li><p><code>pwd</code> (Print Working Directory) 查看当前目录</p></li><li><p><code>cd</code> (Change Directory) 切换目录，如 cd /etc</p></li><li><p><code>ls (List)</code> 查看当前目录下内容，如 ls -al</p></li><li><p><code>mkdir</code> (Make Directory) 创建目录，如 mkdir blog</p></li><li><p><code>touch</code> 创建文件，如 touch index.html</p></li><li><p><code>cat</code> 查看文件全部内容，如 cat index.html</p></li><li><p><code>more/less</code> 查看文件，如more /etc/passwd、less /etc/passwd</p></li><li><p><code>rm (remove)</code> 删除文件，如 rm index.html、rm -rf  blog</p></li><li><p><code>rmdir</code> (Remove Directory) 删除文件夹，只能删除空文件夹，不常用</p></li><li><p><code>mv</code> (move) 移动文件或重命名，如 mv index.html ./demo/index.html</p></li><li><p><code>cp</code> (copy) 复制文件，cp index.html ./demo/index.html</p></li><li><p><code>head</code> 查看文件前几行，如 head -5 index.html</p></li><li><p><code>tail</code> 查看文件后几行 –n –f，如 tail index.html、tail -f -n 5 index.html</p></li><li><p><code>tab</code> 自动补全，连按两次会将所有匹配内容显示出来</p></li><li><p><code>history</code> 查看操作历史</p></li><li><p><code>\&gt;</code> 和<code>&gt;&gt;</code>重定向，如echo hello world! &gt; README.md，&gt;覆盖 &gt;&gt;追加</p></li><li><p><code>wget</code> 下载，如wget <a href="https://nodejs.org/dist/v4.4.0/node-v4.4.0.tar.gz" target="_blank" rel="noopener">https://nodejs.org/dist/v4.4.0/node-v4.4.0.tar.gz</a></p></li><li><p><code>tar</code> 解压缩，如tar zxvf node-v4.4.0.tar.gz</p></li><li><p><code>curl</code> 网络请求，如curl <a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a></p></li><li><p><code>whoami</code> 查看当前用户</p></li><li><p><code>|</code> 管道符可以将多个命令连接使用，上一次（命令）的执行结果当成下一次（命令）的参数。</p></li><li><p><code>grep</code> 匹配内容，一般结合管道符使用</p></li></ul><h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><h3 id="光标"><a href="#光标" class="headerlink" title="光标"></a>光标</h3><p>ctrl+b 前移至一个字符(backward)<br>ctrl+f 后移至一个字符(forward)<br>alt+b 前移至一个单词<br>alt+f 后移至一个单词<br>ctrl+a 跳转至行首<br>ctrl+e 跳转至行尾<br>ctrl+x 行首/当前位置光标跳转</p><h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><p>alt+. 粘帖上一次命令最后的参数<br>ctrl+h 删除光标前一个字符（backspace）<br>ctrl+d 删除光标后一个字符（delete）<br>ctrl+w 删除光标左侧单词<br>alt+d 删除光标右侧单词<br>ctrl+u 删除光标左侧所有字符<br>ctrl+k 删除光标右侧所有字符<br>ctrl+l 清屏<br>ctrl+shift+c 复制(ctrl+ins)<br>ctrl+shift+v 粘贴(shift+ins)</p><h3 id="命令-1"><a href="#命令-1" class="headerlink" title="命令"></a>命令</h3><p>ctrl+n 下一条命令<br>ctrl+p 上一条命令<br>shift+PageUp 向上翻页<br>shift+PageDown 向下翻页<br>ctrl+r 查找命令历史记录，输入keyword多次ctrl+r可返回下一个匹配项</p><p>touch 新建文件<br>mkdir 新建目录<br>rm 删除文件<br>rm -r 删除文件夹(recusive)<br>mv 移动文件<br>ls 列出文件<br>pwd 打印工作目录<br>cd 改变目录<br>reset 清屏</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;命令&quot;&gt;&lt;a href=&quot;#命令&quot; class=&quot;headerlink&quot; title=&quot;命令&quot;&gt;&lt;/a&gt;命令&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;pwd&lt;/code&gt; (Print Working Directory) 查看当前目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;
+      
     
     </summary>
     

@@ -148,6 +148,54 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-PortOccupancy"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-08-12 00:00:00" datetime="2019-08-11T16:00:00.000Z"  itemprop="datePublished">2019-08-12</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Windows/">Windows</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/08/12/PortOccupancy/">Windows下如何查看某个端口被谁占用</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        我们以4000端口为例：
+1.按下 Win+R 再输 入cmd 调出命令行窗口，输入 netstat -aon|findstr &quot;4000&quot; ，找到指定行最后一列的数字 （PID） ，我们这里是 8364 .2.输入 tasklist|findstr &quot;8364&quot; ，发现是 node.exe 占用了4000端口。3.再次输入 taskkill /f /...
+    
+
+        <a href="/2019/08/12/PortOccupancy/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-DataStructure"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -326,7 +374,7 @@
         
     </div>
     <div class="bottom">
-        <p><span>焦洋 &copy; 2019 - 2020</span>
+        <p><span>焦洋 &copy; 2019 - 2021</span>
         </p>
 		<p><span>
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

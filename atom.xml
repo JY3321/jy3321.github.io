@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jy3321.github.io/"/>
-  <updated>2020-10-05T05:36:10.914Z</updated>
+  <updated>2021-02-02T15:10:47.136Z</updated>
   <id>https://jy3321.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每日学习</title>
+    <link href="https://jy3321.github.io/2021/02/02/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://jy3321.github.io/2021/02/02/每日学习/</id>
+    <published>2021-02-02T15:02:53.000Z</published>
+    <updated>2021-02-02T15:10:47.136Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="2020-02-02"><a href="#2020-02-02" class="headerlink" title="2020.02.02"></a>2020.02.02</h1><h2 id="1-java基础语法"><a href="#1-java基础语法" class="headerlink" title="1.java基础语法"></a>1.java基础语法</h2><h3 id="1-java是一种跨平台的纯面向对象的语言，而-Net是一种跨语言的平台"><a href="#1-java是一种跨平台的纯面向对象的语言，而-Net是一种跨语言的平台" class="headerlink" title="1.java是一种跨平台的纯面向对象的语言，而.Net是一种跨语言的平台"></a>1.java是一种跨平台的纯面向对象的语言，而.Net是一种跨语言的平台</h3><p>​    对照关系应该为<br>​    Java：语言        JDK：平台<br>​    C#：语言        .Net：平台<br>即通常我们所说的语言，都是指的语言本身，而.Net 的语言是指的平台，.Net用的语言是C#,也就是说C#和.Net是一个东西，不要问学C#好还是.Net好这样让人笑话的问题。</p><p>​    </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;2020-02-02&quot;&gt;&lt;a href=&quot;#2020-02-02&quot; class=&quot;headerlink&quot; title=&quot;2020.02.02&quot;&gt;&lt;/a&gt;2020.02.02&lt;/h1&gt;&lt;h2 id=&quot;1-java基础语法&quot;&gt;&lt;a href=&quot;#1-java基础语法&quot;
+      
+    
+    </summary>
+    
+      <category term="学习日记" scheme="https://jy3321.github.io/categories/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="学习日记" scheme="https://jy3321.github.io/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>git bash中的快捷键</title>
@@ -426,9 +451,9 @@
       <category term="Java" scheme="https://jy3321.github.io/categories/Java/"/>
     
     
-      <category term="数据结构" scheme="https://jy3321.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="Java" scheme="https://jy3321.github.io/tags/Java/"/>
+    
+      <category term="数据结构" scheme="https://jy3321.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
       <category term="Stack" scheme="https://jy3321.github.io/tags/Stack/"/>
     
@@ -498,34 +523,6 @@
   </entry>
   
   <entry>
-    <title>Hexo博客如何添加评论功能</title>
-    <link href="https://jy3321.github.io/2019/08/12/HexoComments/"/>
-    <id>https://jy3321.github.io/2019/08/12/HexoComments/</id>
-    <published>2019-08-11T16:00:00.000Z</published>
-    <updated>2019-08-14T05:18:59.701Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>想要让自己的博客能够进行互动，所以要添加评论功能。自己也是捣鼓了一会才终于实现。</p><h3 id="评论系统的选择"><a href="#评论系统的选择" class="headerlink" title="评论系统的选择"></a>评论系统的选择</h3><hr><ul><li>多说：貌似已经关闭了</li><li>disqus：需要翻墙访问才行</li><li>友言:不支持https协议，而github使用的是https协议</li><li>网易云跟帖：需要域名</li><li>搜狐畅言：需要备案，不然只能使用15天</li><li>来比力：很多人都推荐使用这个，自己尝试了下确实可行。但是加载速度是真的是太慢了。。。</li></ul><p>在GG了一堆评论系统后，最后发现了一个叫 <code>valine</code> 的评论系统， <code>indigo</code>主题其实也配置了这个系统。</p><hr><h3 id="Valine评论系统安装"><a href="#Valine评论系统安装" class="headerlink" title="Valine评论系统安装"></a>Valine评论系统安装</h3><hr><p>首先我们要去 <code>leancloud</code> 官网注册一个账号，由于国内版的最近好像也要GG，所以我们选择注册 <a href="https://us.leancloud.cn/login.html#/signin" target="_blank" rel="noopener">国际版Valine</a> ,注册成功之后创建一个应用，选择<code>开发版</code>即可，在<code>应用Key</code>中我们可以看到你的 <code>AppID</code> 和 <code>AppKey</code></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/08/12/HexoComments/40K$@D1EWKG7}[WJW8$4_7T.png" alt title>                </div>                <div class="image-caption"></div>            </figure><p>打开主题文件夹中的配置文件 <code>_config.yml</code> ，填写其中的<code>valine</code>，例如我的：</p><p><img src="/2019/08/12/HexoComments/G0_%602%0C3MTHM2VO%7DAYHW94.png" alt></p><p>最后，在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web 安全域名 把你的域名加进去。</p><p>然后你的评论系统应该就可以用了。<br>以上是针对例如 <code>indigo</code> 等自带 <code>valine</code> 配置文件的博客主题的安装方法。如果你的博客主题中没有 <code>valine</code>，你也可以去 <a href="https://valine.js.org/" target="_blank" rel="noopener">Valine官网</a> 阅读以下文档进行相关配置，只需要添加几行代码，操作起来也是很简单的。</p><hr>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h3&gt;&lt;p&gt;想要让自己的博客能够进行互动，所以要添加评论功能。自己也是捣鼓了一会才终于实现。&lt;/p&gt;
-&lt;h3 id=&quot;评论系统的选择&quot;&gt;
-      
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://jy3321.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://jy3321.github.io/tags/Hexo/"/>
-    
-      <category term="Valine" scheme="https://jy3321.github.io/tags/Valine/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hexo博客插入图片的问题</title>
     <link href="https://jy3321.github.io/2019/08/12/HexoPictures/"/>
     <id>https://jy3321.github.io/2019/08/12/HexoPictures/</id>
@@ -551,28 +548,30 @@
   </entry>
   
   <entry>
-    <title>Windows下如何查看某个端口被谁占用</title>
-    <link href="https://jy3321.github.io/2019/08/12/PortOccupancy/"/>
-    <id>https://jy3321.github.io/2019/08/12/PortOccupancy/</id>
+    <title>Hexo博客如何添加评论功能</title>
+    <link href="https://jy3321.github.io/2019/08/12/HexoComments/"/>
+    <id>https://jy3321.github.io/2019/08/12/HexoComments/</id>
     <published>2019-08-11T16:00:00.000Z</published>
-    <updated>2019-08-12T07:16:29.347Z</updated>
+    <updated>2019-08-14T05:18:59.701Z</updated>
     
-    <content type="html"><![CDATA[<p>我们以4000端口为例：</p><p>1.按下 <code>Win+R</code> 再输 入<code>cmd</code> 调出命令行窗口，输入 <code>netstat -aon|findstr &quot;4000&quot;</code> ，找到指定行最后一列的数字 <code>（PID）</code> ，我们这里是 <code>8364</code> .<br>2.输入 <code>tasklist|findstr &quot;8364&quot;</code> ，发现是 <code>node.exe</code> 占用了4000端口。<br>3.再次输入 <code>taskkill /f /t /im node.exe</code> 结束该进程。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/08/12/PortOccupancy/QQ图片20190812141332.png" alt="QQ图片20190812141332" title>                </div>                <div class="image-caption">QQ图片20190812141332</div>            </figure><p>当然第二第三步你也可以再任务管理中进行操作，只需要第一步 <code>netstat -aon|findstr &quot;4000&quot;</code> 找到PID，在任务管理器中PID一列找到对应的进程并把它结束就可以了。如果任务管理器中没有PID这一列，右键单击列头，勾选PID这一列就可以看到了。</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>想要让自己的博客能够进行互动，所以要添加评论功能。自己也是捣鼓了一会才终于实现。</p><h3 id="评论系统的选择"><a href="#评论系统的选择" class="headerlink" title="评论系统的选择"></a>评论系统的选择</h3><hr><ul><li>多说：貌似已经关闭了</li><li>disqus：需要翻墙访问才行</li><li>友言:不支持https协议，而github使用的是https协议</li><li>网易云跟帖：需要域名</li><li>搜狐畅言：需要备案，不然只能使用15天</li><li>来比力：很多人都推荐使用这个，自己尝试了下确实可行。但是加载速度是真的是太慢了。。。</li></ul><p>在GG了一堆评论系统后，最后发现了一个叫 <code>valine</code> 的评论系统， <code>indigo</code>主题其实也配置了这个系统。</p><hr><h3 id="Valine评论系统安装"><a href="#Valine评论系统安装" class="headerlink" title="Valine评论系统安装"></a>Valine评论系统安装</h3><hr><p>首先我们要去 <code>leancloud</code> 官网注册一个账号，由于国内版的最近好像也要GG，所以我们选择注册 <a href="https://us.leancloud.cn/login.html#/signin" target="_blank" rel="noopener">国际版Valine</a> ,注册成功之后创建一个应用，选择<code>开发版</code>即可，在<code>应用Key</code>中我们可以看到你的 <code>AppID</code> 和 <code>AppKey</code></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2019/08/12/HexoComments/40K$@D1EWKG7}[WJW8$4_7T.png" alt title>                </div>                <div class="image-caption"></div>            </figure><p>打开主题文件夹中的配置文件 <code>_config.yml</code> ，填写其中的<code>valine</code>，例如我的：</p><p><img src="/2019/08/12/HexoComments/G0_%602%0C3MTHM2VO%7DAYHW94.png" alt></p><p>最后，在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web 安全域名 把你的域名加进去。</p><p>然后你的评论系统应该就可以用了。<br>以上是针对例如 <code>indigo</code> 等自带 <code>valine</code> 配置文件的博客主题的安装方法。如果你的博客主题中没有 <code>valine</code>，你也可以去 <a href="https://valine.js.org/" target="_blank" rel="noopener">Valine官网</a> 阅读以下文档进行相关配置，只需要添加几行代码，操作起来也是很简单的。</p><hr>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;我们以4000端口为例：&lt;/p&gt;
-&lt;p&gt;1.按下 &lt;code&gt;Win+R&lt;/code&gt; 再输 入&lt;code&gt;cmd&lt;/code&gt; 调出命令行窗口，输入 &lt;code&gt;netstat -aon|findstr &amp;quot;4000&amp;quot;&lt;/code&gt; ，找到指定行最后一列
+        &lt;h3 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h3&gt;&lt;p&gt;想要让自己的博客能够进行互动，所以要添加评论功能。自己也是捣鼓了一会才终于实现。&lt;/p&gt;
+&lt;h3 id=&quot;评论系统的选择&quot;&gt;
       
     
     </summary>
     
-      <category term="Windows" scheme="https://jy3321.github.io/categories/Windows/"/>
+      <category term="Hexo" scheme="https://jy3321.github.io/categories/Hexo/"/>
     
     
-      <category term="Windows" scheme="https://jy3321.github.io/tags/Windows/"/>
+      <category term="Hexo" scheme="https://jy3321.github.io/tags/Hexo/"/>
+    
+      <category term="Valine" scheme="https://jy3321.github.io/tags/Valine/"/>
     
   </entry>
   

@@ -33,7 +33,8 @@
 <meta property="og:image" content="https://jy3321.github.io/2020/10/03/SQL-Server常用语句记录/002.png">
 <meta property="og:image" content="https://jy3321.github.io/2020/10/03/SQL-Server常用语句记录/003.png">
 <meta property="og:image" content="https://jy3321.github.io/2020/10/03/SQL-Server常用语句记录/004.png">
-<meta property="og:updated_time" content="2020-10-03T11:34:56.565Z">
+<meta property="og:image" content="https://jy3321.github.io/2020/10/03/SQL-Server常用语句记录/005.png">
+<meta property="og:updated_time" content="2021-05-04T04:14:50.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL Server常用语句记录">
 <meta name="twitter:description" content="写在前面新的工作跟数据库接触的比较多，而且主要是SQL Server，在此记录一些常用的操作和查询方法，便于日后复习使用。 临时表的建法  12select * into #临时表名 from 你的表;select * into ##临时表名 from 你的表;  注：以上的#代表局部临时表，##代表全局临时表 查询字段第几个字是某个指定字符可用substring函数来查询；如：">
@@ -276,6 +277,17 @@
 
 <p>看见这个结果当时我很郁闷，SQL太出人意料了。<br>在SQL SERVER 2005的帮助文档里关于declare的帮助里发现这么一句话，备注的第三行“局部变量的作用域是其被声明时所在批处理”<br>Msdn的地址：<a href="http://msdn.microsoft.com/zh-cn/library/ms188927.aspx" target="_blank" rel="noopener">http://msdn.microsoft.com/zh-cn/library/ms188927.aspx</a><br>这行字在这么一大篇中还真挺不引人瞩目。<br>现在我们知道原来declare变量的作用域是所在的批处理，if阻断不了它的作用域，那上面我们的代码if内外的代码都在一个批处理中，所以@test都是可用的且if里面设置的值还在。<br>下面我改造一下代码，SQL中是以GO语句来区分批处理的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">IF <span class="number">1</span>=<span class="number">1</span></span><br><span class="line">BEGIN</span><br><span class="line">   DECLARE <span class="meta">@test</span> VARCHAR</span><br><span class="line">   SET <span class="meta">@test</span>=<span class="string">'1'</span>   </span><br><span class="line">   PRINT <span class="string">'in if:'</span>+<span class="meta">@test</span></span><br><span class="line">END</span><br><span class="line">GO</span><br><span class="line">PRINT <span class="string">'out if:'</span>+<span class="meta">@test</span></span><br></pre></td></tr></table></figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2020/10/03/SQL-Server常用语句记录/005.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>这样就会报错。</p>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -283,7 +295,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-10-03T11:34:56.565Z" itemprop="dateUpdated">2020-10-03 19:34:56</time>
+    最后更新时间：<time datetime="2021-05-04T04:14:50.559Z" itemprop="dateUpdated">2021-05-04 12:14:50</time>
 </span><br>
 
 
